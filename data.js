@@ -17,7 +17,7 @@ const CHARACTERS = {
     personality: "若鷲をモチーフにした、爽やかで親しみやすい相棒。少し臆病なところもあるが、勇者を一生懸命励まし、学ぶことを希望に変えてくれる存在。",
     spriteClass: "sprite-sora",
     // 外部画像を使う場合は例： "assets/images/sora.png"
-    spritePath: "",
+    spritePath: "assets/images/sora.png",
     fallbackMark: "🦅",
     imagePixelated: false
   }
