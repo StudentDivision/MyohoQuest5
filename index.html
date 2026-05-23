@@ -1813,6 +1813,179 @@ input.name-input {
   margin-top: 2px;
 }
 
+  /* ===== タイトル画面 調整版（明るく・コンパクト） ===== */
+.screen.title-screen {
+  position: relative;
+  min-height: 100dvh;
+  padding: 10px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-end;
+  background: none !important;
+  overflow: hidden;
+}
+
+.screen.title-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("assets/images/title-bg.png") center center / cover no-repeat;
+  z-index: 0;
+}
+
+.screen.title-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(185, 225, 255, 0.16) 0%,
+      rgba(170, 220, 255, 0.10) 22%,
+      rgba(120, 195, 255, 0.08) 42%,
+      rgba(10, 35, 70, 0.18) 68%,
+      rgba(6, 23, 51, 0.42) 100%
+    );
+  z-index: 0;
+}
+
+.screen.title-screen > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 旧タイトル演出の疑似パーツを消す */
+.title-tower,
+.title-horizon,
+.title-party {
+  display: none !important;
+}
+
+.title-visual {
+  min-height: 34vh !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.title-visual::before,
+.title-visual::after {
+  display: none !important;
+}
+
+.title-logo {
+  margin-top: 0 !important;
+  text-align: center;
+  padding: 0 4px 2px;
+}
+
+.title-logo h1 {
+  margin: 0;
+  font-size: clamp(32px, 8.8vw, 38px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: #fff8d6;
+  text-shadow:
+    0 3px 0 #071733,
+    0 0 18px rgba(255, 242, 168, 0.80),
+    0 0 28px rgba(125, 211, 252, 0.28);
+}
+
+.title-logo .title-sub {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 242, 168, 0.78);
+  border-radius: 999px;
+  color: #fff2a8;
+  background: rgba(7, 23, 51, 0.48);
+  font-size: 12px;
+  font-weight: 900;
+  backdrop-filter: blur(6px);
+}
+
+.title-catch-card,
+.title-profile-card {
+  background: rgba(7, 23, 51, 0.66) !important;
+  color: #f8fbff !important;
+  border: 2px solid rgba(255, 222, 126, 0.88) !important;
+  border-radius: 18px;
+  padding: 12px 14px !important;
+  box-shadow:
+    0 4px 0 rgba(2, 8, 23, 0.35),
+    0 12px 20px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+
+.title-catch-card {
+  margin-top: 0 !important;
+}
+
+.title-catch-card h2,
+.title-profile-card h3 {
+  color: #fff2a8 !important;
+  margin-bottom: 6px;
+}
+
+.title-catch-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.title-profile-card p {
+  margin: 2px 0 6px;
+}
+
+.title-actions {
+  gap: 8px !important;
+}
+
+.title-actions button {
+  min-height: 46px !important;
+  font-size: 15px !important;
+  padding: 9px 12px !important;
+}
+
+/* Safariなどで少しでも1画面に収まりやすくする */
+@media (max-width: 430px) {
+  .screen.title-screen {
+    padding: 8px 10px 12px;
+    gap: 8px;
+  }
+
+  .title-visual {
+    min-height: 30vh !important;
+  }
+
+  .title-logo h1 {
+    font-size: clamp(30px, 8.4vw, 36px);
+  }
+
+  .title-catch-card,
+  .title-profile-card {
+    padding: 10px 12px !important;
+  }
+
+  .title-catch-card p {
+    font-size: 13px;
+  }
+
+  .title-actions button {
+    min-height: 44px !important;
+    font-size: 14px !important;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1924,13 +2097,6 @@ function showTitle() {
   app.innerHTML = `
     <div class="screen title-screen">
       <div class="title-visual">
-        <div class="title-tower"></div>
-        <div class="title-horizon"></div>
-        <div class="title-party">
-          <div class="hero-shadow" aria-hidden="true"></div>
-          <div class="sora-mark" aria-hidden="true">🦅</div>
-        </div>
-
         <div class="title-logo">
           <h1>ミョウホウ・クエスト</h1>
           <span class="title-sub">迷いの塔と若鷲ソラ</span>
@@ -1939,8 +2105,7 @@ function showTitle() {
 
       <div class="title-catch-card">
         <h2>迷いを越えて、希望の空へ。</h2>
-        <p>心にひそむ“あるあるの迷い”を、教学という「人を励ます知恵」で晴らしていこう。</p>
-        <p class="small">若鷲・ソラと進む、スマホ向け短編クイズRPG。</p>
+        <p>心の迷いを「人を励ます知恵」で晴らしていこう。</p>
       </div>
 
       <div class="title-profile-card">
