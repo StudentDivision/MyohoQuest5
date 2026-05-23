@@ -1592,6 +1592,227 @@ input.name-input {
   }
 }
 
+/* ===== タイトル画面：背景画像を全面表示 ===== */
+.screen.title-screen {
+  position: relative;
+  min-height: 100vh;
+  padding: 18px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: flex-end;
+  background: none !important;
+  overflow: hidden;
+}
+
+.screen.title-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("assets/images/title-bg.png") center center / cover no-repeat;
+  z-index: 0;
+}
+
+.screen.title-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 18, 42, 0.05) 0%,
+      rgba(5, 18, 42, 0.16) 34%,
+      rgba(5, 18, 42, 0.48) 68%,
+      rgba(5, 18, 42, 0.82) 100%
+    );
+  z-index: 0;
+}
+
+.screen.title-screen > * {
+  position: relative;
+  z-index: 1;
+}
+
+.title-tower,
+.title-horizon,
+.title-party {
+  display: none !important;
+}
+
+.title-visual {
+  min-height: 52vh !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.title-visual::before,
+.title-visual::after {
+  display: none !important;
+}
+
+.title-logo {
+  margin-top: 0 !important;
+  text-align: center;
+  padding: 0 12px 10px;
+}
+
+.title-logo h1 {
+  font-size: 37px;
+  letter-spacing: 0.05em;
+  color: #fff8d6;
+  text-shadow:
+    0 3px 0 #071733,
+    0 0 18px rgba(255, 242, 168, 0.9),
+    0 0 34px rgba(125, 211, 252, 0.42);
+}
+
+.title-logo .title-sub {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 242, 168, 0.78);
+  border-radius: 999px;
+  color: #fff2a8;
+  background: rgba(7, 23, 51, 0.52);
+  font-size: 13px;
+  font-weight: 900;
+  backdrop-filter: blur(6px);
+}
+
+.title-catch-card,
+.title-profile-card {
+  background: rgba(7, 23, 51, 0.72) !important;
+  color: #f8fbff !important;
+  border: 2px solid rgba(255, 222, 126, 0.88) !important;
+  border-radius: 20px;
+  box-shadow:
+    0 5px 0 rgba(2, 8, 23, 0.45),
+    0 16px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+
+.title-profile-card h3,
+.title-catch-card h2 {
+  color: #fff2a8 !important;
+}
+
+/* ===== 名前入力画面：旅立ち演出強化 ===== */
+.screen.name-screen {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.42) 0%, rgba(255,240,181,0.18) 20%, transparent 44%),
+    linear-gradient(180deg, #102a51 0%, #184a77 34%, #e8f4ff 34.2%, #d9f0ff 58%, #a4d49a 100%);
+}
+
+.name-setup-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(240,247,255,0.96));
+  color: #102033;
+  border: 3px solid #11294d;
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow:
+    0 5px 0 rgba(5, 18, 42, 0.28),
+    0 14px 24px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.name-setup-head {
+  margin-bottom: 12px;
+}
+
+.name-setup-head h2 {
+  margin-bottom: 6px;
+}
+
+.name-setup-head p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.name-preview.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: stretch;
+  min-height: auto;
+  margin: 10px 0 14px;
+}
+
+.name-sprite-card {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #eef7ff 100%);
+  border: 2px solid #9dbfda;
+  border-radius: 18px;
+  padding: 12px 10px;
+  text-align: center;
+  box-shadow:
+    0 4px 0 rgba(17, 41, 77, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.name-sprite-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #12325d;
+}
+
+.name-sprite-card .small {
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.name-sprite-card .pixel-sprite,
+.name-sprite-card .sprite-image-shell {
+  margin: 0 auto;
+  transform: none;
+}
+
+.name-sprite-card .sprite-image-shell {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 26%, rgba(219,234,254,0.42) 100%);
+  border: 2px solid #c6dcf3;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  padding: 6px;
+}
+
+.name-label {
+  color: #12325d !important;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.name-input,
+input.name-input {
+  min-height: 58px;
+  font-size: 22px;
+  border-radius: 16px;
+}
+
+.name-input-help {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.name-actions {
+  margin-top: 2px;
+}
+
   </style>
 </head>
 <body>
@@ -1743,7 +1964,10 @@ function showNameInput() {
 
   const nameIntro = Array.isArray(SAFE_STORY_TEXTS.nameIntro) && SAFE_STORY_TEXTS.nameIntro.length
     ? SAFE_STORY_TEXTS.nameIntro
-    : ["旅立つ前に、冒険者の名前を決めましょう。", "この名前で、ソラと一緒に迷いを晴らす旅へ出発します。"];
+    : [
+        "旅立つ前に、冒険者の名前を決めましょう。",
+        "この名前で、ソラと一緒に迷いを晴らす旅へ出発します。"
+      ];
 
   let introHtml = "";
   nameIntro.forEach(function(text) {
@@ -1751,35 +1975,49 @@ function showNameInput() {
   });
 
   app.innerHTML = `
-    <div class="screen">
+    <div class="screen name-screen">
       <div class="topbar">
         <strong>名前入力</strong>
         <button onclick="showTitle()">戻る</button>
       </div>
 
       <div class="box command-window">
-        <h2>${escapeHtml(getBattleWord("nameInputTitle", "冒険者の名を刻め"))}</h2>
+        <h2>${escapeHtml(getBattleWord("nameInputTitle", "冒険者の名を刻む"))}</h2>
         ${introHtml}
       </div>
 
-      <div class="box">
-        <div class="name-preview">
-          ${renderSprite({
-            type: "hero",
-            spriteClass: getHeroSpriteClass(),
-            spritePath: getHeroSpritePath(),
-            fallbackMark: getHeroFallbackMark(),
-            name: getHeroDisplayName(),
-            imagePixelated: getHeroImagePixelated()
-          })}
-          ${renderSprite({
-            type: "buddy",
-            spriteClass: getBuddySpriteClass(),
-            spritePath: getBuddySpritePath(),
-            fallbackMark: getBuddyFallbackMark(),
-            name: getBuddyDisplayName(),
-            imagePixelated: getBuddyImagePixelated()
-          })}
+      <div class="name-setup-card">
+        <div class="name-setup-head">
+          <h2>旅立ちの準備</h2>
+          <p>主人公と若鷲・ソラのコンビで、迷いを晴らす冒険へ向かいます。</p>
+        </div>
+
+        <div class="name-preview duo">
+          <div class="name-sprite-card">
+            ${renderSprite({
+              type: "hero",
+              spriteClass: getHeroSpriteClass(),
+              spritePath: getHeroSpritePath(),
+              fallbackMark: getHeroFallbackMark(),
+              name: getHeroDisplayName(),
+              imagePixelated: getHeroImagePixelated()
+            })}
+            <strong>主人公</strong>
+            <div class="small">旅立つ冒険者</div>
+          </div>
+
+          <div class="name-sprite-card">
+            ${renderSprite({
+              type: "buddy",
+              spriteClass: getBuddySpriteClass(),
+              spritePath: getBuddySpritePath(),
+              fallbackMark: getBuddyFallbackMark(),
+              name: getBuddyDisplayName(),
+              imagePixelated: getBuddyImagePixelated()
+            })}
+            <strong>若鷲・ソラ</strong>
+            <div class="small">希望を運ぶ相棒</div>
+          </div>
         </div>
 
         <div class="name-form">
@@ -1793,10 +2031,11 @@ function showNameInput() {
             placeholder="${escapeAttr(getDefaultHeroName())}"
             autocomplete="off"
           >
+          <div class="name-input-help">※ 10文字まで。あとから成績画面でも確認できます。</div>
         </div>
       </div>
 
-      <div class="btn-area">
+      <div class="btn-area name-actions">
         <button onclick="savePlayerNameAndStart()">${escapeHtml(getBattleWord("nameInputButton", "この名前で旅立つ"))}</button>
         <button class="sub" onclick="startWithDefaultName()">${escapeHtml(getBattleWord("defaultNameButton", "ユウキで始める"))}</button>
       </div>
