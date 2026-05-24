@@ -3479,29 +3479,29 @@ input.name-input {
   }
 }
 
-  /* ===== 名前入力画面：一枚絵＋命名UI版 ===== */
+/* ===== 名前入力画面：一枚絵を主役にした調整版 ===== */
 .screen.name-screen {
   padding: 12px;
   gap: 10px;
   background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.55) 0%, rgba(202,232,255,0.20) 22%, transparent 44%),
-    linear-gradient(180deg, #102a51 0%, #173c66 30%, #eaf7ff 30.2%, #dff4f2 58%, #bfe4bf 100%) !important;
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.54) 0%, rgba(202,232,255,0.18) 22%, transparent 44%),
+    linear-gradient(180deg, #102a51 0%, #173c66 28%, #eaf7ff 28.2%, #dff4f2 58%, #bfe4bf 100%) !important;
 }
 
-/* 上部メッセージ */
+/* 上メッセージ */
 .name-hero-message {
   background:
-    linear-gradient(180deg, rgba(7, 23, 51, 0.92), rgba(8, 22, 48, 0.80));
+    linear-gradient(180deg, rgba(7, 23, 51, 0.90), rgba(8, 22, 48, 0.78));
   color: #f8fbff;
   border: 2px solid rgba(255, 222, 126, 0.88);
   border-radius: 22px;
   padding: 14px 16px;
   box-shadow:
-    0 5px 0 rgba(2, 8, 23, 0.34),
-    0 14px 24px rgba(0,0,0,0.18),
+    0 4px 0 rgba(2, 8, 23, 0.30),
+    0 10px 18px rgba(0,0,0,0.14),
     inset 0 1px 0 rgba(255,255,255,0.10);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .name-hero-message h2 {
@@ -3510,65 +3510,67 @@ input.name-input {
   line-height: 1.35;
   color: #fff2a8;
   text-shadow:
-    0 2px 0 rgba(5, 18, 42, 0.72),
-    0 0 14px rgba(255, 242, 168, 0.24);
+    0 2px 0 rgba(5, 18, 42, 0.70),
+    0 0 12px rgba(255, 242, 168, 0.20);
 }
 
 .name-hero-message p {
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
-  color: rgba(255,255,255,0.94);
+  color: rgba(255,255,255,0.95);
 }
 
-/* 一枚絵カード */
+/* 全体カード */
 .name-scene-card {
   border-radius: 26px;
-  overflow: hidden;
+  overflow: visible;
   border: 2px solid rgba(17, 41, 77, 0.95);
   box-shadow:
-    0 5px 0 rgba(5, 18, 42, 0.24),
-    0 14px 24px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.22);
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,248,255,0.96));
+    0 5px 0 rgba(5, 18, 42, 0.22),
+    0 14px 24px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0;
 }
 
-/* 一枚絵部分 */
+/* 一枚絵表示エリア */
 .name-scene-visual {
   position: relative;
-  min-height: 300px;
+  border-radius: 24px;
+  overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(8,23,51,0.10), rgba(8,23,51,0.22)),
-    url("assets/images/name-entry-scene.png") center center / cover no-repeat;
+    linear-gradient(180deg, rgba(16,42,81,0.10), rgba(16,42,81,0.20));
 }
 
-.name-scene-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.00) 0%,
-      rgba(255,255,255,0.00) 54%,
-      rgba(255,255,255,0.16) 100%
-    );
-  pointer-events: none;
+/* 画像を「全部見せる」ため img で表示 */
+.name-scene-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  background: #cfe7ff;
 }
 
+/* イラスト上のコピー */
 .name-scene-copy {
   position: absolute;
-  left: 18px;
+  left: 16px;
   top: 16px;
-  right: 18px;
+  right: 16px;
   z-index: 2;
+  pointer-events: none;
 }
 
 .name-scene-copy .scene-badge {
   display: inline-flex;
   padding: 5px 11px;
   border-radius: 999px;
-  background: rgba(17, 41, 77, 0.86);
+  background: rgba(17, 41, 77, 0.82);
   color: #fff2a8;
   font-size: 11px;
   font-weight: 900;
@@ -3579,38 +3581,38 @@ input.name-input {
 
 .name-scene-copy h2 {
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   line-height: 1.2;
   color: #ffffff;
   text-shadow:
     0 2px 0 rgba(5, 18, 42, 0.78),
-    0 6px 18px rgba(0,0,0,0.24);
+    0 5px 16px rgba(0,0,0,0.22);
 }
 
 .name-scene-copy p {
   margin: 8px 0 0;
   font-size: 14px;
   line-height: 1.55;
-  color: rgba(255,255,255,0.97);
+  color: rgba(255,255,255,0.98);
   text-shadow:
     0 2px 0 rgba(5, 18, 42, 0.72),
     0 4px 14px rgba(0,0,0,0.22);
 }
 
-/* 下の命名パネル */
+/* 命名パネル：主張を弱める */
 .name-entry-panel {
-  margin: -16px 16px 16px;
+  margin: 12px;
   position: relative;
   z-index: 3;
-  padding: 14px;
-  border-radius: 22px;
+  padding: 12px;
+  border-radius: 20px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,248,255,0.94));
-  border: 2px solid rgba(244, 208, 111, 0.88);
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(241,248,255,0.72));
+  border: 1.5px solid rgba(244, 208, 111, 0.72);
   box-shadow:
-    0 5px 0 rgba(91, 60, 15, 0.18),
-    0 12px 24px rgba(0,0,0,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.96);
+    0 4px 0 rgba(91, 60, 15, 0.10),
+    0 8px 18px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.90);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -3619,33 +3621,34 @@ input.name-input {
   display: inline-flex;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(17, 41, 77, 0.90);
+  background: rgba(17, 41, 77, 0.86);
   color: #fff2a8;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .name-entry-panel h3 {
   margin: 0;
-  font-size: 24px;
+  font-size: 22px;
   color: #102a43;
 }
 
 .name-entry-panel p {
-  margin: 6px 0 12px;
+  margin: 5px 0 10px;
   font-size: 13px;
   line-height: 1.6;
-  color: #475569;
+  color: #516277;
 }
 
+/* 入力欄周辺も少し軽く */
 .name-entry-area {
   padding: 12px;
   border-radius: 18px;
   background:
-    linear-gradient(180deg, rgba(241,248,255,0.96), rgba(255,255,255,0.98));
-  border: 1px solid rgba(157, 191, 218, 0.82);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
+    linear-gradient(180deg, rgba(255,255,255,0.76), rgba(248,252,255,0.72));
+  border: 1px solid rgba(157, 191, 218, 0.70);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.88);
 }
 
 .name-label {
@@ -3661,26 +3664,26 @@ input.name-input {
   width: 100%;
   min-height: 58px;
   padding: 10px 14px;
-  border: 3px solid #f4d06f;
+  border: 3px solid rgba(244, 208, 111, 0.88);
   border-radius: 16px;
   background:
-    linear-gradient(180deg, #ffffff 0%, #eef8ff 100%);
+    linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(238,248,255,0.90) 100%);
   color: #102033;
   font-size: 23px;
   font-weight: 900;
   outline: none;
   box-shadow:
-    0 4px 0 rgba(91, 60, 15, 0.22),
-    0 0 18px rgba(244, 208, 111, 0.14),
-    inset 0 2px 4px rgba(0,0,0,0.06);
+    0 3px 0 rgba(91, 60, 15, 0.16),
+    0 0 12px rgba(244, 208, 111, 0.08),
+    inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .name-input:focus {
   border-color: #fff2a8;
   box-shadow:
-    0 0 0 4px rgba(244, 208, 111, 0.22),
-    0 4px 0 rgba(91, 60, 15, 0.22),
-    inset 0 2px 4px rgba(0,0,0,0.06);
+    0 0 0 4px rgba(244, 208, 111, 0.18),
+    0 3px 0 rgba(91, 60, 15, 0.14),
+    inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .name-input-help {
@@ -3690,7 +3693,6 @@ input.name-input {
   line-height: 1.55;
 }
 
-/* ボタン */
 .name-actions {
   margin-top: auto;
   gap: 8px;
@@ -3700,7 +3702,6 @@ input.name-input {
   min-height: 50px;
 }
 
-/* 小画面 */
 @media (max-width: 390px) {
   .screen.name-screen {
     padding: 10px;
@@ -3719,10 +3720,6 @@ input.name-input {
     font-size: 13px;
   }
 
-  .name-scene-visual {
-    min-height: 260px;
-  }
-
   .name-scene-copy {
     left: 14px;
     top: 14px;
@@ -3730,7 +3727,7 @@ input.name-input {
   }
 
   .name-scene-copy h2 {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   .name-scene-copy p {
@@ -3738,12 +3735,12 @@ input.name-input {
   }
 
   .name-entry-panel {
-    margin: -14px 12px 12px;
-    padding: 12px;
+    margin: 10px;
+    padding: 11px;
   }
 
   .name-entry-panel h3 {
-    font-size: 22px;
+    font-size: 21px;
   }
 
   .name-input,
@@ -4066,6 +4063,11 @@ function showNameInput() {
 
       <div class="name-scene-card">
         <div class="name-scene-visual">
+          <img
+            class="name-scene-image"
+            src="assets/images/name-entry-scene.jpg"
+            alt="旅立ちの一枚絵"
+          >
           <div class="name-scene-copy">
             <span class="scene-badge">JOURNEY BEGINS</span>
             <h2>出会いは、旅立ちの光。</h2>
