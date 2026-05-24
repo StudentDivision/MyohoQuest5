@@ -6,7 +6,8 @@ const CHARACTERS = {
     role: "迷いを晴らす冒険者",
     spriteClass: "sprite-hero",
     // 外部画像を使う場合は例： "assets/images/hero.png"
-    spritePath: "",
+    spritePath: "assets/images/hero.png",
+    imagePixelated: false
     fallbackMark: "🧑",
     imagePixelated: false
   },
