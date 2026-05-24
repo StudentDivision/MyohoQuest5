@@ -2219,6 +2219,36 @@ input.name-input {
   }
 }
 
+  /* ===== BGM ON/OFF ボタン ===== */
+.bgm-toggle {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  right: 10px;
+  z-index: 20;
+  width: auto;
+  min-width: 58px;
+  min-height: 34px;
+  padding: 5px 10px;
+  border: 2px solid rgba(255, 242, 168, 0.9);
+  border-radius: 999px;
+  background: rgba(7, 23, 51, 0.58);
+  color: #fff8d6;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow:
+    0 3px 0 rgba(2, 8, 23, 0.42),
+    0 8px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+}
+
+.bgm-toggle:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 0 rgba(2, 8, 23, 0.42),
+    0 5px 10px rgba(0, 0, 0, 0.16);
+}
+
   </style>
 </head>
 <body>
@@ -2233,6 +2263,21 @@ const PLAYER_MAX_HP = 100;
 const REVIEW_ENEMY_HP = 40;
 const CORRECT_DAMAGE = 20;
 const WRONG_DAMAGE = 15;
+
+const BGM_SETTING_KEY = "myoho_quest_bgm_enabled_v1";
+
+const BGM_TRACKS = {
+  title: "assets/audio/title.mp3",
+  battle: "assets/audio/battle.mp3",
+  final: "assets/audio/final-boss.mp3",
+  ending: "assets/audio/ending.mp3"
+};
+
+let bgmAudio = null;
+let bgmEnabled = localStorage.getItem(BGM_SETTING_KEY) !== "off";
+let currentBgmKey = "";
+let desiredBgmKey = "";
+let audioUnlocked = false;
 
 const SAFE_AREAS = typeof AREAS !== "undefined" && Array.isArray(AREAS) ? AREAS : [];
 const SAFE_QUESTIONS = typeof QUESTIONS !== "undefined" && Array.isArray(QUESTIONS) ? QUESTIONS : [];
@@ -2255,8 +2300,135 @@ function initGame() {
     return;
   }
 
+  setupAudioUnlock();
   loadGame();
   showTitle();
+}
+
+function getBgmAudio() {
+  if (!bgmAudio) {
+    bgmAudio = new Audio();
+    bgmAudio.loop = true;
+    bgmAudio.volume = 0.42;
+    bgmAudio.preload = "auto";
+  }
+
+  return bgmAudio;
+}
+
+function setupAudioUnlock() {
+  const unlock = function() {
+    audioUnlocked = true;
+
+    if (desiredBgmKey && bgmEnabled) {
+      playBgm(desiredBgmKey);
+    }
+
+    document.removeEventListener("pointerdown", unlock);
+    document.removeEventListener("touchstart", unlock);
+    document.removeEventListener("click", unlock);
+  };
+
+  document.addEventListener("pointerdown", unlock, { once: true });
+  document.addEventListener("touchstart", unlock, { once: true });
+  document.addEventListener("click", unlock, { once: true });
+}
+
+function requestBgm(key) {
+  desiredBgmKey = key;
+  injectBgmButton();
+
+  if (!bgmEnabled) {
+    pauseBgm();
+    return;
+  }
+
+  playBgm(key);
+}
+
+function playBgm(key) {
+  const src = BGM_TRACKS[key];
+
+  if (!src || !bgmEnabled) return;
+
+  const audio = getBgmAudio();
+
+  if (currentBgmKey !== key) {
+    audio.pause();
+    audio.src = src;
+    audio.currentTime = 0;
+    currentBgmKey = key;
+  }
+
+  audio.loop = true;
+  audio.volume = 0.42;
+
+  const playPromise = audio.play();
+
+  if (playPromise && typeof playPromise.catch === "function") {
+    playPromise
+      .then(function() {
+        audioUnlocked = true;
+      })
+      .catch(function() {
+        // スマホでは初回タップ前に再生が止められることがあります。
+        // その場合は、次のタップで setupAudioUnlock() が再生します。
+      });
+  }
+}
+
+function pauseBgm() {
+  if (bgmAudio) {
+    bgmAudio.pause();
+  }
+}
+
+function toggleBgm(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  bgmEnabled = !bgmEnabled;
+  localStorage.setItem(BGM_SETTING_KEY, bgmEnabled ? "on" : "off");
+
+  if (bgmEnabled) {
+    if (desiredBgmKey) {
+      playBgm(desiredBgmKey);
+    }
+  } else {
+    pauseBgm();
+  }
+
+  updateBgmButton();
+}
+
+function injectBgmButton() {
+  setTimeout(function() {
+    const screen = document.querySelector(".screen");
+    if (!screen) return;
+
+    let button = screen.querySelector(".bgm-toggle");
+
+    if (!button) {
+      button = document.createElement("button");
+      button.className = "bgm-toggle";
+      button.type = "button";
+      button.addEventListener("click", toggleBgm);
+      screen.appendChild(button);
+    }
+
+    updateBgmButton();
+  }, 0);
+}
+
+function updateBgmButton() {
+  const buttons = document.querySelectorAll(".bgm-toggle");
+
+  buttons.forEach(function(button) {
+    button.textContent = bgmEnabled ? "♪ ON" : "♪ OFF";
+    button.setAttribute("aria-label", bgmEnabled ? "BGMをオフにする" : "BGMをオンにする");
+  });
 }
 
 function defaultState() {
@@ -2360,6 +2532,7 @@ function showTitle() {
       </div>
     </div>
   `;
+  requestBgm("title");
 }
 
   function revealTitleMenu(event) {
@@ -2463,6 +2636,8 @@ function showNameInput() {
       input.select();
     }
   }, 50);
+
+  requestBgm("title");
 }
 
 function savePlayerNameAndStart() {
@@ -2522,6 +2697,7 @@ function showPrologue() {
       </div>
     </div>
   `;
+  requestBgm("title");
 }
 
 function showAreaSelect() {
@@ -2541,6 +2717,7 @@ function showAreaSelect() {
       </div>
     `;
     return;
+    requestBgm("title");
   }
 
   const finalUnlocked = isFinalAreaUnlocked();
@@ -2715,6 +2892,7 @@ function showStats() {
       </div>
     </div>
   `;
+  requestBgm("title");
 }
 
 function showReviewMode() {
@@ -2833,6 +3011,7 @@ function showEnding() {
       </div>
     </div>
   `;
+  requestBgm("ending");
 }
 
 function startBattle(areaId) {
@@ -2872,7 +3051,7 @@ function startBattle(areaId) {
     return;
   }
 
-  battle = {
+    battle = {
     mode: "area",
     area: area,
     playerHp: PLAYER_MAX_HP,
@@ -2885,6 +3064,8 @@ function startBattle(areaId) {
     selected: null,
     message: `${escapeHtml(area.boss)}「${escapeHtml(area.bossLine || "迷いの声が響いている…。")}」`
   };
+
+  requestBgm(area.final ? "final" : "battle");
 
   nextQuestion();
 }
@@ -2936,6 +3117,8 @@ function startReviewBattle() {
     selected: null,
     message: `ソラ「${escapeHtml(pickLine("review"))}」`
   };
+
+  requestBgm("battle");
 
   nextQuestion();
 }
