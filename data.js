@@ -7,7 +7,7 @@ const CHARACTERS = {
     spriteClass: "sprite-hero",
     // 外部画像を使う場合は例： "assets/images/hero.png"
     spritePath: "assets/images/hero.png",
-    imagePixelated: false
+    imagePixelated: false,
     fallbackMark: "🧑",
     imagePixelated: false
   },
