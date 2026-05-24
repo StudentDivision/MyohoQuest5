@@ -3750,6 +3750,223 @@ input.name-input {
   }
 }
 
+
+  /* ===== 名前入力画面：最終調整版 一枚絵主役＋軽い命名UI ===== */
+.screen.name-screen {
+  padding: 12px;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.54) 0%, rgba(202,232,255,0.18) 22%, transparent 44%),
+    linear-gradient(180deg, #102a51 0%, #173c66 28%, #eaf7ff 28.2%, #dff4f2 58%, #bfe4bf 100%) !important;
+}
+
+/* 以前の上部説明箱は非表示 */
+.name-hero-message {
+  display: none !important;
+}
+
+/* 一枚絵全体カード */
+.name-scene-card {
+  border-radius: 26px;
+  overflow: visible;
+  border: 2px solid rgba(17, 41, 77, 0.95);
+  box-shadow:
+    0 5px 0 rgba(5, 18, 42, 0.22),
+    0 14px 24px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 0;
+}
+
+/* 一枚絵表示エリア */
+.name-scene-visual {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(16,42,81,0.10), rgba(16,42,81,0.20));
+}
+
+/* 縦長イラストをなるべく全部見せる */
+.name-scene-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #cfe7ff;
+}
+
+/* 画像上のコピー：短く、上品に */
+.name-scene-copy {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.name-scene-copy .scene-badge {
+  display: none;
+}
+
+.name-scene-copy h2 {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.2;
+  color: #fff8d6;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.82),
+    0 5px 16px rgba(0,0,0,0.26),
+    0 0 14px rgba(255, 242, 168, 0.22);
+}
+
+.name-scene-copy p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.98);
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.76),
+    0 4px 14px rgba(0,0,0,0.24);
+}
+
+/* 命名パネル：軽く、背景と調和 */
+.name-entry-panel {
+  margin: 12px;
+  position: relative;
+  z-index: 3;
+  padding: 13px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.76), rgba(241,248,255,0.68));
+  border: 1.5px solid rgba(244, 208, 111, 0.70);
+  box-shadow:
+    0 4px 0 rgba(91, 60, 15, 0.10),
+    0 8px 18px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.name-entry-panel .small-label {
+  display: none;
+}
+
+.name-entry-panel h3 {
+  margin: 0 0 9px;
+  font-size: 22px;
+  color: #102a43;
+  line-height: 1.25;
+}
+
+.name-entry-panel p {
+  display: none;
+}
+
+/* 入力欄周辺 */
+.name-entry-area {
+  padding: 12px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.74), rgba(248,252,255,0.68));
+  border: 1px solid rgba(157, 191, 218, 0.68);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.84);
+}
+
+.name-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #12325d !important;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.name-input,
+input.name-input {
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 14px;
+  border: 3px solid rgba(244, 208, 111, 0.86);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(238,248,255,0.90) 100%);
+  color: #102033;
+  font-size: 23px;
+  font-weight: 900;
+  outline: none;
+  box-shadow:
+    0 3px 0 rgba(91, 60, 15, 0.16),
+    0 0 12px rgba(244, 208, 111, 0.08),
+    inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.name-input:focus {
+  border-color: #fff2a8;
+  box-shadow:
+    0 0 0 4px rgba(244, 208, 111, 0.18),
+    0 3px 0 rgba(91, 60, 15, 0.14),
+    inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.name-input-help {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+/* ボタン */
+.name-actions {
+  margin-top: auto;
+  gap: 8px;
+}
+
+.name-actions button {
+  min-height: 50px;
+}
+
+/* 小さめ画面用 */
+@media (max-width: 390px) {
+  .screen.name-screen {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .name-scene-copy {
+    left: 14px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .name-scene-copy h2 {
+    font-size: 23px;
+  }
+
+  .name-scene-copy p {
+    font-size: 13px;
+  }
+
+  .name-entry-panel {
+    margin: 10px;
+    padding: 11px;
+  }
+
+  .name-entry-panel h3 {
+    font-size: 21px;
+  }
+
+  .name-input,
+  input.name-input {
+    font-size: 21px;
+    min-height: 54px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -4056,29 +4273,22 @@ function showNameInput() {
         <button onclick="showTitle()">戻る</button>
       </div>
 
-      <div class="name-hero-message">
-        <h2>冒険者の名を刻め</h2>
-        <p>若鷲・ソラとともに、迷いを越える旅が始まります。</p>
-      </div>
-
       <div class="name-scene-card">
         <div class="name-scene-visual">
           <img
             class="name-scene-image"
-            src="assets/images/name-entry-scene.jpg"
-            alt="旅立ちの一枚絵"
+            src="assets/images/name-entry-scene.png"
+            alt="若き勇者と若鷲・ソラの旅立ち"
           >
+
           <div class="name-scene-copy">
-            <span class="scene-badge">JOURNEY BEGINS</span>
-            <h2>出会いは、旅立ちの光。</h2>
-            <p>若き勇者と若鷲・ソラ。<br>希望の空へ向かう物語が、ここから始まる。</p>
+            <h2>冒険者の名を刻め</h2>
+            <p>若鷲・ソラと、希望の空へ。</p>
           </div>
         </div>
 
         <div class="name-entry-panel">
-          <span class="small-label">NAME ENTRY</span>
           <h3>冒険者の名</h3>
-          <p>この名が、旅の記録に刻まれます。</p>
 
           <div class="name-entry-area">
             <label class="name-label" for="playerNameInput">主人公の名前</label>
@@ -4091,7 +4301,7 @@ function showNameInput() {
               placeholder="${escapeAttr(getDefaultHeroName())}"
               autocomplete="off"
             >
-            <div class="name-input-help">※ 10文字まで。この名前でソラとともに旅立ちます。</div>
+            <div class="name-input-help">この名で、ソラと旅立つ。</div>
           </div>
         </div>
       </div>
