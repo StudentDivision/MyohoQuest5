@@ -3479,6 +3479,280 @@ input.name-input {
   }
 }
 
+  /* ===== 名前入力画面：一枚絵＋命名UI版 ===== */
+.screen.name-screen {
+  padding: 12px;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.55) 0%, rgba(202,232,255,0.20) 22%, transparent 44%),
+    linear-gradient(180deg, #102a51 0%, #173c66 30%, #eaf7ff 30.2%, #dff4f2 58%, #bfe4bf 100%) !important;
+}
+
+/* 上部メッセージ */
+.name-hero-message {
+  background:
+    linear-gradient(180deg, rgba(7, 23, 51, 0.92), rgba(8, 22, 48, 0.80));
+  color: #f8fbff;
+  border: 2px solid rgba(255, 222, 126, 0.88);
+  border-radius: 22px;
+  padding: 14px 16px;
+  box-shadow:
+    0 5px 0 rgba(2, 8, 23, 0.34),
+    0 14px 24px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.name-hero-message h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  line-height: 1.35;
+  color: #fff2a8;
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.72),
+    0 0 14px rgba(255, 242, 168, 0.24);
+}
+
+.name-hero-message p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.94);
+}
+
+/* 一枚絵カード */
+.name-scene-card {
+  border-radius: 26px;
+  overflow: hidden;
+  border: 2px solid rgba(17, 41, 77, 0.95);
+  box-shadow:
+    0 5px 0 rgba(5, 18, 42, 0.24),
+    0 14px 24px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,248,255,0.96));
+}
+
+/* 一枚絵部分 */
+.name-scene-visual {
+  position: relative;
+  min-height: 300px;
+  background:
+    linear-gradient(180deg, rgba(8,23,51,0.10), rgba(8,23,51,0.22)),
+    url("assets/images/name-entry-scene.jpg") center center / cover no-repeat;
+}
+
+.name-scene-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.00) 0%,
+      rgba(255,255,255,0.00) 54%,
+      rgba(255,255,255,0.16) 100%
+    );
+  pointer-events: none;
+}
+
+.name-scene-copy {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  right: 18px;
+  z-index: 2;
+}
+
+.name-scene-copy .scene-badge {
+  display: inline-flex;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(17, 41, 77, 0.86);
+  color: #fff2a8;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.name-scene-copy h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.78),
+    0 6px 18px rgba(0,0,0,0.24);
+}
+
+.name-scene-copy p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.97);
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.72),
+    0 4px 14px rgba(0,0,0,0.22);
+}
+
+/* 下の命名パネル */
+.name-entry-panel {
+  margin: -16px 16px 16px;
+  position: relative;
+  z-index: 3;
+  padding: 14px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,248,255,0.94));
+  border: 2px solid rgba(244, 208, 111, 0.88);
+  box-shadow:
+    0 5px 0 rgba(91, 60, 15, 0.18),
+    0 12px 24px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.name-entry-panel .small-label {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(17, 41, 77, 0.90);
+  color: #fff2a8;
+  font-size: 11px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.name-entry-panel h3 {
+  margin: 0;
+  font-size: 24px;
+  color: #102a43;
+}
+
+.name-entry-panel p {
+  margin: 6px 0 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.name-entry-area {
+  padding: 12px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(241,248,255,0.96), rgba(255,255,255,0.98));
+  border: 1px solid rgba(157, 191, 218, 0.82);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.name-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #12325d !important;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.name-input,
+input.name-input {
+  width: 100%;
+  min-height: 58px;
+  padding: 10px 14px;
+  border: 3px solid #f4d06f;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #eef8ff 100%);
+  color: #102033;
+  font-size: 23px;
+  font-weight: 900;
+  outline: none;
+  box-shadow:
+    0 4px 0 rgba(91, 60, 15, 0.22),
+    0 0 18px rgba(244, 208, 111, 0.14),
+    inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.name-input:focus {
+  border-color: #fff2a8;
+  box-shadow:
+    0 0 0 4px rgba(244, 208, 111, 0.22),
+    0 4px 0 rgba(91, 60, 15, 0.22),
+    inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.name-input-help {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+/* ボタン */
+.name-actions {
+  margin-top: auto;
+  gap: 8px;
+}
+
+.name-actions button {
+  min-height: 50px;
+}
+
+/* 小画面 */
+@media (max-width: 390px) {
+  .screen.name-screen {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .name-hero-message {
+    padding: 12px 14px;
+  }
+
+  .name-hero-message h2 {
+    font-size: 20px;
+  }
+
+  .name-hero-message p {
+    font-size: 13px;
+  }
+
+  .name-scene-visual {
+    min-height: 260px;
+  }
+
+  .name-scene-copy {
+    left: 14px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .name-scene-copy h2 {
+    font-size: 24px;
+  }
+
+  .name-scene-copy p {
+    font-size: 13px;
+  }
+
+  .name-entry-panel {
+    margin: -14px 12px 12px;
+    padding: 12px;
+  }
+
+  .name-entry-panel h3 {
+    font-size: 22px;
+  }
+
+  .name-input,
+  input.name-input {
+    font-size: 21px;
+    min-height: 54px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -3790,57 +4064,33 @@ function showNameInput() {
         <p>若鷲・ソラとともに、迷いを越える旅が始まります。</p>
       </div>
 
-      <div class="name-departure-card">
-        <div class="name-departure-head">
-          <span class="small-label">DEPARTURE</span>
-          <h2>出発の仲間</h2>
-          <p>この名で、ソラとともに希望の道を進みます。</p>
-        </div>
-
-        <div class="departure-duo">
-          <div class="departure-member">
-            <div class="member-sprite">
-              ${renderSprite({
-                type: "hero",
-                spriteClass: getHeroSpriteClass(),
-                spritePath: getHeroSpritePath(),
-                fallbackMark: getHeroFallbackMark(),
-                name: getHeroDisplayName(),
-                imagePixelated: getHeroImagePixelated()
-              })}
-            </div>
-            <strong>主人公</strong>
-            <div class="member-role">迷いを越える冒険者</div>
-          </div>
-
-          <div class="departure-member">
-            <div class="member-sprite">
-              ${renderSprite({
-                type: "buddy",
-                spriteClass: getBuddySpriteClass(),
-                spritePath: getBuddySpritePath(),
-                fallbackMark: getBuddyFallbackMark(),
-                name: getBuddyDisplayName(),
-                imagePixelated: getBuddyImagePixelated()
-              })}
-            </div>
-            <strong>若鷲・ソラ</strong>
-            <div class="member-role">希望を運ぶ相棒</div>
+      <div class="name-scene-card">
+        <div class="name-scene-visual">
+          <div class="name-scene-copy">
+            <span class="scene-badge">JOURNEY BEGINS</span>
+            <h2>出会いは、旅立ちの光。</h2>
+            <p>若き勇者と若鷲・ソラ。<br>希望の空へ向かう物語が、ここから始まる。</p>
           </div>
         </div>
 
-        <div class="name-entry-area">
-          <label class="name-label" for="playerNameInput">冒険者の名</label>
-          <input
-            id="playerNameInput"
-            class="name-input"
-            type="text"
-            value="${escapeAttr(defaultName)}"
-            maxlength="10"
-            placeholder="${escapeAttr(getDefaultHeroName())}"
-            autocomplete="off"
-          >
-          <div class="name-input-help">※ 10文字まで。この名が旅の記録に刻まれます。</div>
+        <div class="name-entry-panel">
+          <span class="small-label">NAME ENTRY</span>
+          <h3>冒険者の名</h3>
+          <p>この名が、旅の記録に刻まれます。</p>
+
+          <div class="name-entry-area">
+            <label class="name-label" for="playerNameInput">主人公の名前</label>
+            <input
+              id="playerNameInput"
+              class="name-input"
+              type="text"
+              value="${escapeAttr(defaultName)}"
+              maxlength="10"
+              placeholder="${escapeAttr(getDefaultHeroName())}"
+              autocomplete="off"
+            >
+            <div class="name-input-help">※ 10文字まで。この名前でソラとともに旅立ちます。</div>
+          </div>
         </div>
       </div>
 
