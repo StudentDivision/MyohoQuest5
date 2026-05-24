@@ -2556,6 +2556,356 @@ input.name-input {
     0 0 8px rgba(5, 18, 42, 0.22);
 }
 
+
+  /* ===== 冒険マップ画面：上質な旅路UI ===== */
+.area-screen {
+  padding: 12px;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.56) 0%, rgba(199,231,255,0.28) 20%, transparent 42%),
+    linear-gradient(180deg, #102a51 0%, #173c66 29%, #eaf7ff 29.2%, #d9f3f1 56%, #bfe4bf 100%) !important;
+}
+
+.area-screen .topbar {
+  min-height: 50px;
+  border-width: 2px;
+  box-shadow:
+    0 4px 0 rgba(2, 8, 23, 0.35),
+    0 12px 18px rgba(0,0,0,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.area-intro-card {
+  padding: 14px 16px !important;
+  border-radius: 22px !important;
+  border: 2px solid rgba(17, 41, 77, 0.92) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(239,249,255,0.95)) !important;
+  color: #102033 !important;
+  box-shadow:
+    0 5px 0 rgba(5, 18, 42, 0.22),
+    0 13px 22px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.95) !important;
+}
+
+.area-intro-card h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  color: #102a43;
+}
+
+.area-intro-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.map-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.map-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(15, 42, 78, 0.28);
+  border: 1px solid rgba(15, 42, 78, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.map-dot.done {
+  background: #22c55e;
+  border-color: #15803d;
+}
+
+.map-dot.final {
+  background: #c4b5fd;
+  border-color: #6d5bd0;
+}
+
+.map-line {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(15, 42, 78, 0.22);
+}
+
+/* 章カード全体 */
+.adventure-map-list {
+  position: relative;
+  display: grid;
+  gap: 9px;
+  margin-top: 2px;
+}
+
+.adventure-map-list::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(244, 208, 111, 0.92),
+      rgba(125, 211, 252, 0.60),
+      rgba(109, 91, 208, 0.48)
+    );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* 既存カードを上質化 */
+.area-button.chapter-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 118px;
+  padding: 13px 14px 13px 42px !important;
+  text-align: left;
+  border-radius: 22px !important;
+  border: 2px solid rgba(17, 41, 77, 0.92) !important;
+  color: #102033;
+  overflow: hidden;
+  box-shadow:
+    0 4px 0 rgba(5, 18, 42, 0.22),
+    0 12px 20px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.70) !important;
+  transform: none !important;
+}
+
+.area-button.chapter-card::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 22px;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #fff8d6 28%, #f4d06f 70%, #b7791f 100%);
+  border: 2px solid #102a43;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.62),
+    0 4px 10px rgba(0,0,0,0.16);
+  z-index: 2;
+}
+
+.area-button.chapter-card.clear::before {
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #bbf7d0 30%, #22c55e 78%, #15803d 100%);
+}
+
+.area-button.chapter-card.locked::before {
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #e5e7eb 30%, #94a3b8 78%, #475569 100%);
+}
+
+/* CLEARリボンを無効化し、小バッジ化 */
+.area-button.chapter-card::after {
+  content: none !important;
+}
+
+.stage-clear-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.92);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  box-shadow:
+    0 2px 0 rgba(21, 128, 61, 0.65),
+    0 5px 10px rgba(0,0,0,0.12);
+}
+
+.stage-lock-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(71, 85, 105, 0.86);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+/* 章カード内 */
+.stage-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 5px;
+}
+
+.chapter-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(17, 41, 77, 0.88);
+  color: #fff2a8;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stage-title {
+  display: block;
+  margin-top: 1px;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 900;
+  color: #102a43;
+  letter-spacing: 0.01em;
+}
+
+.stage-catch {
+  display: block;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+  color: rgba(16, 42, 67, 0.82);
+}
+
+.stage-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 3px;
+}
+
+.stage-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(17, 41, 77, 0.20);
+  color: #102033;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.82);
+}
+
+/* 各章の色味を少し上質化 */
+.area-button.area-nichiren {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.68) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(244,255,238,0.98), rgba(130,221,157,0.92)) !important;
+}
+
+.area-button.area-shingyo {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.62) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(255,246,232,0.98), rgba(246,171,104,0.92)) !important;
+}
+
+.area-button.area-seimei {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.72) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(238,249,255,0.98), rgba(133,192,239,0.92)) !important;
+}
+
+.area-button.area-jiyu {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.66) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(255,247,222,0.98), rgba(234,172,72,0.92)) !important;
+}
+
+.area-button.area-sekai {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.70) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(232,250,255,0.98), rgba(94,202,226,0.92)) !important;
+}
+
+.area-button.area-soka {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.68) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(255,250,224,0.98), rgba(218,178,72,0.92)) !important;
+}
+
+.area-button.area-tower,
+.area-button.locked {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255,255,255,0.52) 0 18px, transparent 19px),
+    linear-gradient(135deg, rgba(232,229,255,0.74), rgba(89,92,122,0.78)) !important;
+  color: rgba(255,255,255,0.92) !important;
+}
+
+.area-button.locked .stage-title,
+.area-button.locked .stage-catch {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+.area-button.locked .stage-chip {
+  background: rgba(255,255,255,0.72);
+  color: #334155;
+}
+
+/* 下部ボタン */
+.area-screen > .btn-area {
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.area-screen > .btn-area button {
+  min-height: 46px;
+}
+
+/* 小さめ画面ではさらに圧縮 */
+@media (max-width: 390px) {
+  .area-screen {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .area-intro-card {
+    padding: 12px 14px !important;
+  }
+
+  .area-intro-card h2 {
+    font-size: 22px;
+  }
+
+  .area-intro-card p {
+    font-size: 13px;
+  }
+
+  .area-button.chapter-card {
+    min-height: 108px;
+    padding: 12px 12px 12px 40px !important;
+  }
+
+  .stage-title {
+    font-size: 22px;
+  }
+
+  .stage-catch {
+    font-size: 12px;
+  }
+
+  .stage-chip {
+    font-size: 10px;
+    padding: 4px 7px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -3023,11 +3373,11 @@ function showAreaSelect() {
       </div>
     `;
     return;
-    requestBgm("title");
   }
 
   const finalUnlocked = isFinalAreaUnlocked();
   let areaButtons = "";
+  let progressHtml = "";
 
   SAFE_AREAS.forEach(function(area, index) {
     const cleared = state.clearedAreas.includes(area.id);
@@ -3037,19 +3387,30 @@ function showAreaSelect() {
     const voiceName = area.voiceLabel || area.boss || "迷いの声";
     const rewardName = area.rewardName || "希望のしるし";
 
+    if (index > 0) {
+      progressHtml += `<span class="map-line"></span>`;
+    }
+
+    progressHtml += `
+      <span class="map-dot ${cleared ? "done" : ""} ${area.final ? "final" : ""}"></span>
+    `;
+
     areaButtons += `
       <button
         class="area-button chapter-card area-${escapeAttr(area.id)} ${cleared ? "clear" : ""} ${locked ? "locked" : ""}"
         ${locked ? "disabled" : ""}
         onclick="${area.final ? `showBeforeFinal('${escapeAttr(area.id)}')` : `startBattle('${escapeAttr(area.id)}')`}"
       >
+        ${cleared ? `<span class="stage-clear-badge">CLEAR</span>` : ""}
+        ${locked ? `<span class="stage-lock-badge">LOCK</span>` : ""}
+
         <span class="stage-content">
           <span class="chapter-label">${escapeHtml(chapterLabel)}</span>
-          <span class="stage-title">${cleared ? "✅ " : ""}${escapeHtml(area.name)}</span>
-          <span class="stage-catch">${escapeHtml(stageCatch)}${locked ? " / まだ解放されていません" : ""}</span>
+          <span class="stage-title">${escapeHtml(area.name)}</span>
+          <span class="stage-catch">${escapeHtml(stageCatch)}${locked ? " / 6つの章を越えると解放" : ""}</span>
           <span class="stage-row">
             <span class="stage-chip">迷いの声：${escapeHtml(voiceName)}</span>
-            <span class="stage-chip">希望のしるし：${escapeHtml(rewardName)}</span>
+            <span class="stage-chip">しるし：${escapeHtml(rewardName)}</span>
           </span>
         </span>
       </button>
@@ -3065,11 +3426,15 @@ function showAreaSelect() {
 
       <div class="area-intro-card">
         <h2>${escapeHtml(getPlayerName())}の旅路</h2>
-        <p>章ごとに現れる“迷いの声”を晴らすと、最終章「マヨイの塔」が開かれます。</p>
-        <span class="tag">${escapeHtml(getTitleName())}</span>
+        <p>迷いの声を晴らし、マヨイの塔へ。</p>
+        <div class="map-progress">
+          ${progressHtml}
+        </div>
       </div>
 
-      ${areaButtons}
+      <div class="adventure-map-list">
+        ${areaButtons}
+      </div>
 
       <div class="btn-area">
         <button class="sub" onclick="showReviewMode()">復習モード</button>
@@ -3077,6 +3442,8 @@ function showAreaSelect() {
       </div>
     </div>
   `;
+
+  requestBgm("title");
 }
 
 function showBeforeFinal(areaId) {
