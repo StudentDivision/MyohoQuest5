@@ -2906,6 +2906,308 @@ input.name-input {
   }
 }
 
+  /* ===== 冒険マップ：背景イラスト強化＆コンパクト化 ===== */
+
+.area-screen {
+  padding: 12px;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.55) 0%, rgba(210,235,255,0.22) 20%, transparent 42%),
+    linear-gradient(180deg, #102a51 0%, #173c66 26%, #eef8ff 26.2%, #dff4f2 58%, #caebcf 100%) !important;
+}
+
+/* 上部の説明カード */
+.area-intro-card {
+  padding: 14px 16px !important;
+  border-radius: 22px !important;
+  border: 2px solid rgba(17, 41, 77, 0.92) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.97), rgba(241,249,255,0.95)) !important;
+  box-shadow:
+    0 5px 0 rgba(5, 18, 42, 0.18),
+    0 12px 22px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.92) !important;
+}
+
+.area-intro-card h2 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  color: #102a43;
+}
+
+.area-intro-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #334155;
+}
+
+/* 冒険マップの縦ライン */
+.adventure-map-list {
+  position: relative;
+  display: grid;
+  gap: 9px;
+}
+
+.adventure-map-list::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 230, 140, 0.9),
+      rgba(147, 197, 253, 0.55),
+      rgba(167, 139, 250, 0.45)
+    );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* 各章カード */
+.area-button.chapter-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  padding: 14px 14px 14px 44px !important;
+  text-align: left;
+  border-radius: 22px !important;
+  border: 2px solid rgba(17, 41, 77, 0.92) !important;
+  color: #ffffff;
+  overflow: hidden;
+  box-shadow:
+    0 4px 0 rgba(5, 18, 42, 0.20),
+    0 12px 20px rgba(0,0,0,0.10) !important;
+}
+
+/* 左の旅路ポイント */
+.area-button.chapter-card::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 22px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #fff8d6 26%, #f4d06f 72%, #b7791f 100%);
+  border: 2px solid #102a43;
+  box-shadow:
+    0 0 0 3px rgba(255,255,255,0.62),
+    0 4px 10px rgba(0,0,0,0.16);
+  z-index: 3;
+}
+
+.area-button.chapter-card.clear::before {
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #bbf7d0 30%, #22c55e 78%, #15803d 100%);
+}
+
+.area-button.chapter-card.locked::before {
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, #e5e7eb 30%, #94a3b8 78%, #475569 100%);
+}
+
+/* 背景画像の上に読みやすさ用のオーバーレイ */
+.area-button.chapter-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 23, 51, 0.48) 0%,
+      rgba(7, 23, 51, 0.24) 42%,
+      rgba(7, 23, 51, 0.12) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08) 0%,
+      rgba(255,255,255,0.00) 100%
+    );
+  z-index: 0;
+}
+
+/* CLEAR / LOCK バッジ */
+.stage-clear-badge,
+.stage-lock-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.stage-clear-badge {
+  background: rgba(34, 197, 94, 0.92);
+  color: #fff;
+  box-shadow:
+    0 2px 0 rgba(21, 128, 61, 0.62),
+    0 5px 10px rgba(0,0,0,0.10);
+}
+
+.stage-lock-badge {
+  background: rgba(71, 85, 105, 0.90);
+  color: #fff;
+}
+
+/* 中身 */
+.stage-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+}
+
+.chapter-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(17, 41, 77, 0.86);
+  color: #fff2a8;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.stage-title {
+  display: block;
+  margin-top: 1px;
+  font-size: 23px;
+  line-height: 1.12;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.65),
+    0 4px 10px rgba(0,0,0,0.18);
+}
+
+.stage-catch {
+  display: block;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 800;
+  color: rgba(255,255,255,0.96);
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.62),
+    0 4px 10px rgba(0,0,0,0.16);
+}
+
+/* 迷いの声・しるし行は非表示 */
+.stage-row {
+  display: none !important;
+}
+
+/* 下部ボタン */
+.area-screen > .btn-area {
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.area-screen > .btn-area button {
+  min-height: 46px;
+}
+
+/* ===== 各章の背景画像 ===== */
+.area-button.area-nichiren {
+  background:
+    url("assets/images/areas/nichiren_forest.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-shingyo {
+  background:
+    url("assets/images/areas/shingyo_dojo.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-seimei {
+  background:
+    url("assets/images/areas/seimei_lake.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-jiyu {
+  background:
+    url("assets/images/areas/jiyu_land.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-sekai {
+  background:
+    url("assets/images/areas/sekai_port.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-soka {
+  background:
+    url("assets/images/areas/soka_hall.jpg") center center / cover no-repeat !important;
+}
+
+.area-button.area-tower,
+.area-button.locked {
+  background:
+    url("assets/images/areas/mayoi_tower.jpg") center center / cover no-repeat !important;
+}
+
+/* 最終章だけ少し霧っぽく */
+.area-button.area-tower::after,
+.area-button.locked::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(30, 41, 59, 0.68) 0%,
+      rgba(51, 65, 85, 0.52) 45%,
+      rgba(71, 85, 105, 0.38) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08) 0%,
+      rgba(255,255,255,0.00) 100%
+    );
+}
+
+/* 小さい画面用 */
+@media (max-width: 390px) {
+  .area-screen {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .area-intro-card {
+    padding: 12px 14px !important;
+  }
+
+  .area-intro-card h2 {
+    font-size: 22px;
+  }
+
+  .area-intro-card p {
+    font-size: 14px;
+  }
+
+  .area-button.chapter-card {
+    min-height: 90px;
+    padding: 12px 12px 12px 40px !important;
+  }
+
+  .stage-title {
+    font-size: 21px;
+  }
+
+  .stage-catch {
+    font-size: 12px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -3384,8 +3686,6 @@ function showAreaSelect() {
     const locked = area.final && !finalUnlocked;
     const chapterLabel = area.final ? "最終章" : `第${index + 1}章`;
     const stageCatch = area.stageCatch || area.doubt || area.theme;
-    const voiceName = area.voiceLabel || area.boss || "迷いの声";
-    const rewardName = area.rewardName || "希望のしるし";
 
     if (index > 0) {
       progressHtml += `<span class="map-line"></span>`;
@@ -3408,10 +3708,6 @@ function showAreaSelect() {
           <span class="chapter-label">${escapeHtml(chapterLabel)}</span>
           <span class="stage-title">${escapeHtml(area.name)}</span>
           <span class="stage-catch">${escapeHtml(stageCatch)}${locked ? " / 6つの章を越えると解放" : ""}</span>
-          <span class="stage-row">
-            <span class="stage-chip">迷いの声：${escapeHtml(voiceName)}</span>
-            <span class="stage-chip">しるし：${escapeHtml(rewardName)}</span>
-          </span>
         </span>
       </button>
     `;
