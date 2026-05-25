@@ -48,6 +48,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/bat.png"
     battleImagePath: "assets/images/battle/nichiren_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 42%",
     final: false
   },
   {
@@ -73,6 +74,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/runaway.png"
     battleImagePath: "assets/images/battle/shingyo_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 34%",
     final: false
   },
   {
@@ -98,6 +100,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/ghost.png"
     battleImagePath: "assets/images/battle/seimei_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 38%",
     final: false
   },
   {
@@ -123,6 +126,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/oni.png"
     battleImagePath: "assets/images/battle/jiyu_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 40%",
     final: false
   },
   {
@@ -148,6 +152,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/ship.png"
     battleImagePath: "assets/images/battle/sekai_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 36%",
     final: false
   },
   {
@@ -173,6 +178,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/book.png"
     battleImagePath: "assets/images/battle/soka_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 36%",
     final: false
   },
   {
@@ -198,6 +204,7 @@ const AREAS = [
     // 外部画像を使う場合は例： "assets/images/enemies/final-boss.png"
     battleImagePath: "assets/images/battle/final_enemy.png",
     spritePath: "",
+    battleImagePosition: "center 32%",
     final: true
   }
 ];
