@@ -4214,6 +4214,175 @@ input.name-input {
   }
 }
 
+  /* ===== 敵一枚絵の見せ方を強化 ===== */
+.enemy-scene {
+  position: relative;
+  min-height: 320px;
+  border: 3px solid #071733;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #10243f;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.14),
+    0 5px 0 rgba(5,18,42,0.34),
+    0 14px 22px rgba(0,0,0,0.16);
+}
+
+/* 画像本体 */
+.enemy-scene-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.02);
+}
+
+/* 絵の上に薄く重ねる幕 */
+.enemy-scene-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,18,42,0.28) 0%,
+      rgba(5,18,42,0.06) 34%,
+      rgba(5,18,42,0.40) 100%
+    );
+  pointer-events: none;
+}
+
+/* 上部の敵情報 */
+.enemy-scene-head {
+  position: relative;
+  z-index: 2;
+  padding: 12px 14px 0;
+  display: grid;
+  gap: 8px;
+}
+
+.enemy-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.enemy-name-row strong {
+  color: #fff8de;
+  font-size: 15px;
+  font-weight: 900;
+  text-shadow:
+    0 2px 0 rgba(5,18,42,0.95),
+    0 0 10px rgba(0,0,0,0.25);
+}
+
+.battle-progress-badge {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,245,0.90);
+  color: #12233b;
+  border: 2px solid rgba(17,41,77,0.72);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow:
+    0 2px 0 rgba(5,18,42,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+.enemy-scene .hp-wrap,
+.player-mini-status .hp-wrap {
+  height: 14px;
+  border: 2px solid rgba(5,18,42,0.92);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.86);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.enemy-scene .hp {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #ef4444, #facc15);
+  border-radius: 999px;
+}
+
+.enemy-hp-label {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.96);
+  font-size: 12px;
+  font-weight: 900;
+  text-shadow: 0 2px 0 rgba(5,18,42,0.84);
+}
+
+/* 味方ステータスを軽く・薄く */
+.compact-player-status {
+  position: absolute;
+  z-index: 3;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: rgba(248, 252, 255, 0.78);
+  border: 2px solid rgba(7, 23, 51, 0.82);
+  box-shadow:
+    0 3px 0 rgba(5,18,42,0.18),
+    0 8px 16px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.compact-player-status strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #102a43;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.compact-player-status .hp {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #84cc16, #facc15);
+  border-radius: 999px;
+}
+
+.compact-player-status .small {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #425466;
+}
+
+/* スマホでさらに見やすく */
+@media (max-width: 480px) {
+  .enemy-scene {
+    min-height: 340px;
+  }
+
+  .enemy-name-row strong {
+    font-size: 14px;
+  }
+
+  .battle-progress-badge {
+    font-size: 11px;
+    padding: 4px 9px;
+  }
+
+  .compact-player-status {
+    padding: 9px 11px;
+  }
+}
+
+  .compact-battle-screen {
+  gap: 8px;
+}
+
   </style>
 </head>
 <body>
