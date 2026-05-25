@@ -3967,6 +3967,253 @@ input.name-input {
   }
 }
 
+  /* ===== バトル画面：敵一枚絵＋コンパクトHUD 最終案 ===== */
+.compact-battle-screen {
+  padding: 10px;
+  gap: 8px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.50) 0%, rgba(202,232,255,0.18) 22%, transparent 44%),
+    linear-gradient(180deg, #102a51 0%, #173c66 28%, #eaf7ff 28.2%, #dff4f2 58%, #bfe4bf 100%) !important;
+}
+
+.compact-battle-screen .topbar {
+  min-height: 46px;
+}
+
+/* 敵一枚絵エリア */
+.enemy-scene {
+  position: relative;
+  min-height: 245px;
+  border: 3px solid #071733;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(8,23,51,0.08), rgba(8,23,51,0.28)),
+    var(--battle-image, linear-gradient(180deg, #64c8ff, #60b76c));
+  background-size: cover;
+  background-position: center center;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.22),
+    0 5px 0 rgba(5, 18, 42, 0.34),
+    0 14px 22px rgba(0,0,0,0.16);
+}
+
+.enemy-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,18,42,0.54) 0%,
+      rgba(5,18,42,0.08) 40%,
+      rgba(5,18,42,0.62) 100%
+    );
+  pointer-events: none;
+}
+
+/* 敵情報 */
+.enemy-scene-head {
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  display: grid;
+  gap: 7px;
+}
+
+.enemy-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.enemy-name-row strong {
+  color: #fff8d6;
+  font-size: 14px;
+  text-shadow:
+    0 2px 0 rgba(5,18,42,0.88),
+    0 0 12px rgba(255,242,168,0.24);
+}
+
+.battle-progress-badge {
+  flex: 0 0 auto;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 248, 214, 0.92);
+  color: #102033;
+  border: 1px solid rgba(17,41,77,0.72);
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow:
+    0 2px 0 rgba(5,18,42,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+/* HPゲージ */
+.enemy-scene .hp-wrap,
+.player-mini-status .hp-wrap {
+  height: 14px;
+  border: 2px solid rgba(5,18,42,0.88);
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.84);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.18);
+}
+
+.enemy-scene .hp {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #ef4444, #facc15);
+  border-radius: 999px;
+}
+
+.enemy-hp-label {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.94);
+  font-size: 11px;
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(5,18,42,0.72);
+}
+
+/* 味方情報は小さく */
+.player-mini-status {
+  position: absolute;
+  z-index: 3;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 9px 10px;
+  border-radius: 16px;
+  background: rgba(248, 252, 255, 0.88);
+  border: 2px solid rgba(7, 23, 51, 0.88);
+  box-shadow:
+    0 3px 0 rgba(5,18,42,0.24),
+    0 8px 16px rgba(0,0,0,0.14),
+    inset 0 1px 0 rgba(255,255,255,0.90);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.player-mini-status strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #102a43;
+  font-size: 13px;
+}
+
+.player-mini-status .hp {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #84cc16, #facc15);
+  border-radius: 999px;
+}
+
+.player-mini-status .small {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 11px;
+}
+
+/* 問題欄 */
+.compact-question-box {
+  padding: 12px 13px !important;
+  border-radius: 18px !important;
+}
+
+.compact-question-box .question-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 7px;
+}
+
+.compact-question-box .tag {
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.compact-question-box .question {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 900;
+  color: #102033;
+}
+
+/* 選択肢 */
+.compact-choices {
+  display: grid;
+  gap: 7px;
+}
+
+.compact-choices button {
+  min-height: 43px;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(232,244,255,0.96));
+}
+
+.compact-choices button::before {
+  content: "▶";
+  color: #c47b12;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+
+.compact-choices button.correct {
+  background: linear-gradient(180deg, #f0fff4, #bbf7d0) !important;
+  border-color: #15803d !important;
+}
+
+.compact-choices button.wrong {
+  background: linear-gradient(180deg, #fff1f2, #fecdd3) !important;
+  border-color: #be123c !important;
+}
+
+/* メッセージ欄 */
+.compact-message {
+  padding: 10px 12px !important;
+  border-radius: 16px !important;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* 次へボタン */
+.compact-battle-screen .btn-area {
+  margin-top: 0;
+  gap: 7px;
+}
+
+.compact-battle-screen .btn-area button {
+  min-height: 43px;
+}
+
+/* 小さめ画面 */
+@media (max-width: 390px) {
+  .enemy-scene {
+    min-height: 220px;
+  }
+
+  .compact-question-box .question {
+    font-size: 16px;
+  }
+
+  .compact-choices button {
+    min-height: 41px;
+    font-size: 13px;
+  }
+
+  .compact-message {
+    font-size: 12px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -4750,8 +4997,8 @@ function startBattle(areaId) {
     mode: "area",
     area: area,
     playerHp: PLAYER_MAX_HP,
-    enemyHp: Number(area.hp) || 60,
-    enemyMaxHp: Number(area.hp) || 60,
+    enemyHp: Number(area.hp) || 200,
+    enemyMaxHp: Number(area.hp) || 200,
     questions: shuffleArray(areaQuestions),
     index: 0,
     currentQuestion: null,
@@ -4818,6 +5065,41 @@ function startReviewBattle() {
   nextQuestion();
 }
 
+  function getBattleImagePath(area) {
+  if (!area) return "assets/images/battle/review_enemy.jpg";
+
+  if (area.battleImagePath) {
+    return area.battleImagePath;
+  }
+
+  const defaultMap = {
+    nichiren: "assets/images/battle/nichiren_enemy.jpg",
+    shingyo: "assets/images/battle/shingyo_enemy.jpg",
+    seimei: "assets/images/battle/seimei_enemy.jpg",
+    jiyu: "assets/images/battle/jiyu_enemy.jpg",
+    sekai: "assets/images/battle/sekai_enemy.jpg",
+    soka: "assets/images/battle/soka_enemy.jpg",
+    tower: "assets/images/battle/final_enemy.jpg",
+    review: "assets/images/battle/review_enemy.jpg"
+  };
+
+  return defaultMap[area.id] || "assets/images/battle/review_enemy.jpg";
+}
+
+function getBattleTargetQuestions() {
+  if (!battle) return 10;
+
+  if (battle.area && battle.area.final) {
+    return 12;
+  }
+
+  if (battle.mode === "review") {
+    return 8;
+  }
+
+  return 10;
+}
+
 function renderBattle() {
   if (!battle || !battle.currentQuestion) {
     showAreaSelect();
@@ -4825,111 +5107,89 @@ function renderBattle() {
   }
 
   const question = battle.currentQuestion;
-  const enemyPercent = Math.max(0, Math.round((battle.enemyHp / battle.enemyMaxHp) * 100));
-  const playerPercent = Math.max(0, Math.round((battle.playerHp / PLAYER_MAX_HP) * 100));
-  const isFinal = battle.area.final === true;
+  const enemyPercent = Math.max(0, Math.min(100, (battle.enemyHp / battle.enemyMaxHp) * 100));
+  const playerPercent = Math.max(0, Math.min(100, (battle.playerHp / PLAYER_MAX_HP) * 100));
+  const battleImagePath = getBattleImagePath(battle.area);
+  const targetQuestions = getBattleTargetQuestions();
+  const currentQuestionNumber = Math.min(battle.index, targetQuestions);
 
   let choicesHtml = "";
 
   question.choices.forEach(function(choice, index) {
-    let buttonClass = "choice";
+    let resultClass = "";
 
     if (battle.answered) {
       if (index === question.answer) {
-        buttonClass += " correct";
+        resultClass = "correct";
       } else if (index === battle.selected) {
-        buttonClass += " wrong";
+        resultClass = "wrong";
       }
     }
 
     choicesHtml += `
       <button
-        class="${buttonClass}"
-        ${battle.answered ? "disabled" : ""}
+        class="${resultClass}"
         onclick="answerQuestion(${index})"
+        ${battle.answered ? "disabled" : ""}
       >
         ${escapeHtml(choice)}
       </button>
     `;
   });
 
-  const heroSprite = renderSprite({
-    type: "hero",
-    spriteClass: getHeroSpriteClass(),
-    spritePath: getHeroSpritePath(),
-    fallbackMark: getHeroFallbackMark(),
-    name: getHeroDisplayName(),
-    imagePixelated: getHeroImagePixelated()
-  });
-
-  const buddySprite = renderSprite({
-    type: "buddy",
-    spriteClass: getBuddySpriteClass(),
-    spritePath: getBuddySpritePath(),
-    fallbackMark: getBuddyFallbackMark(),
-    name: getBuddyDisplayName(),
-    imagePixelated: getBuddyImagePixelated()
-  });
-
-  const enemySprite = renderSprite({
-    type: "monster",
-    spriteClass: battle.area.spriteClass || "",
-    spritePath: battle.area.spritePath || "",
-    fallbackMark: battle.area.mark || "❖",
-    name: battle.area.boss || "敵",
-    imagePixelated: battle.area.imagePixelated === true,
-    final: isFinal
-  });
-
   app.innerHTML = `
-    <div class="screen">
+    <div class="screen compact-battle-screen">
       <div class="topbar">
         <strong>${escapeHtml(battle.area.name)}</strong>
-        <button onclick="showAreaSelect()">${escapeHtml(getBattleWord("runButton", "にげる"))}</button>
+        <button onclick="showAreaSelect()">にげる</button>
       </div>
 
-      <div class="box">
-        <h3>${escapeHtml(battle.area.theme)}</h3>
-        <p class="small">${escapeHtml(battle.area.intro || "")}</p>
-      </div>
+      <div
+        class="enemy-scene ${battle.area.final ? "final-battle-scene" : ""}"
+        id="battleField"
+        style="--battle-image: url('${escapeAttr(battleImagePath)}');"
+      >
+        <div class="enemy-scene-head">
+          <div class="enemy-name-row">
+            <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
+            <span class="battle-progress-badge">第${currentQuestionNumber}問 / ${targetQuestions}</span>
+          </div>
 
-      <div class="battle-field" id="battleField">
-        <div class="status enemy-status">
-          <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
           <div class="hp-wrap">
             <div class="hp" style="width:${enemyPercent}%"></div>
           </div>
-          <span class="small hp-label"><span>迷いゲージ</span><span>${battle.enemyHp} / ${battle.enemyMaxHp}</span></span>
+
+          <span class="enemy-hp-label">
+            <span>迷いゲージ</span>
+            <span>${battle.enemyHp} / ${battle.enemyMaxHp}</span>
+          </span>
         </div>
 
-        <div class="sprite-row">
-          <div class="party-sprites">
-            ${heroSprite}
-            ${buddySprite}
-          </div>
-          ${enemySprite}
-        </div>
-
-        <div class="status player-status">
+        <div class="player-mini-status">
           <strong>${escapeHtml(getPlayerName())} & ソラ</strong>
           <div class="hp-wrap">
             <div class="hp" style="width:${playerPercent}%"></div>
           </div>
-          <span class="small">HP ${battle.playerHp} / ${PLAYER_MAX_HP}</span>
+          <span class="small">
+            <span>HP</span>
+            <span>${battle.playerHp} / ${PLAYER_MAX_HP}</span>
+          </span>
         </div>
       </div>
 
-      <div class="question-box">
-        <span class="tag">第${battle.index}問</span>
-        <span class="tag">${escapeHtml(typeLabel(question.type))}</span>
+      <div class="box compact-question-box">
+        <div class="question-tags">
+          <span class="tag">第${battle.index}問</span>
+          <span class="tag">${escapeHtml(typeLabel(question.type))}</span>
+        </div>
         <p class="question">${escapeHtml(question.question)}</p>
       </div>
 
-      <div class="choices">
+      <div class="compact-choices">
         ${choicesHtml}
       </div>
 
-      <div class="message">
+      <div class="message compact-message">
         ${battle.message}
       </div>
 
@@ -4938,6 +5198,8 @@ function renderBattle() {
       </div>
     </div>
   `;
+
+  injectBgmButton();
 }
 
 function answerQuestion(choiceIndex) {
