@@ -33,7 +33,7 @@ const AREAS = [
     voiceLabel: "シラナイママ",
     stageCatch: "知らないままでいいという迷い",
     mark: "❔",
-    hp: 70,
+    hp: 200,
     doubt: "知らないことへの不安",
     intro: "森の奥で、「知らなくても困らない」という声が、学ぶ一歩を止めている。",
     bossLine: "知らないままでいいよ。学んだって、明日の自分は変わらないって。",
@@ -46,6 +46,7 @@ const AREAS = [
     rewardName: "妙法の小剣",
     spriteClass: "enemy-bat",
     // 外部画像を使う場合は例： "assets/images/enemies/bat.png"
+    battleImagePath: "assets/images/battle/nichiren_enemy.png",
     spritePath: "",
     final: false
   },
@@ -57,7 +58,7 @@ const AREAS = [
     voiceLabel: "アトデヤル",
     stageCatch: "一歩を先延ばしにする迷い",
     mark: "⏳",
-    hp: 75,
+    hp: 200,
     doubt: "行動できない弱さ",
     intro: "道場の前で、「あとでやればいい」という声が、小さな挑戦を先延ばしにさせている。",
     bossLine: "今日は疲れたでしょ。明日からでいいよ。最初の一歩なんて、重いだけだよ。",
@@ -70,6 +71,7 @@ const AREAS = [
     rewardName: "信行学の盾",
     spriteClass: "enemy-runaway",
     // 外部画像を使う場合は例： "assets/images/enemies/runaway.png"
+    battleImagePath: "assets/images/battle/shingyo_enemy.png",
     spritePath: "",
     final: false
   },
@@ -81,7 +83,7 @@ const AREAS = [
     voiceLabel: "ヒカクノメ",
     stageCatch: "生命の揺らぎに翻弄される迷い",
     mark: "👁️",
-    hp: 80,
+    hp: 220,
     doubt: "自分には価値がないという思い",
     intro: "湖面には、誰かと比べて揺れる心が大きく映し出されている。",
     bossLine: "ほら、あの人はすごい。比べたら、君なんてたいしたことないよ。",
@@ -94,6 +96,7 @@ const AREAS = [
     rewardName: "生命尊厳の宝珠",
     spriteClass: "enemy-ghost",
     // 外部画像を使う場合は例： "assets/images/enemies/ghost.png"
+    battleImagePath: "assets/images/battle/seimei_enemy.png",
     spritePath: "",
     final: false
   },
@@ -105,7 +108,7 @@ const AREAS = [
     voiceLabel: "ジブンダケ",
     stageCatch: "「自分さえよければいい」という迷い",
     mark: "🪞",
-    hp: 80,
+    hp: 220,
     doubt: "使命を忘れる心",
     intro: "広い大地に、「自分だけで精いっぱい」という声が広がっている。",
     bossLine: "人のことまで考えなくていいよ。自分だけ守れれば、それで十分だよ。",
@@ -118,6 +121,7 @@ const AREAS = [
     rewardName: "地涌の旗",
     spriteClass: "enemy-oni",
     // 外部画像を使う場合は例： "assets/images/enemies/oni.png"
+    battleImagePath: "assets/images/battle/jiyu_enemy.png",
     spritePath: "",
     final: false
   },
@@ -129,7 +133,7 @@ const AREAS = [
     voiceLabel: "キメツケロード",
     stageCatch: "対話の前に、相手を決めつける迷い",
     mark: "🛣️",
-    hp: 85,
+    hp: 240,
     doubt: "人とつながれない慢心",
     intro: "港には、相手を決めつけてしまう霧が立ちこめ、対話の航路を隠している。",
     bossLine: "どうせ分かり合えないよ。相手の話を聞く前に、もう決めてしまえばいい。",
@@ -142,6 +146,7 @@ const AREAS = [
     rewardName: "広布の羅針盤",
     spriteClass: "enemy-ship",
     // 外部画像を使う場合は例： "assets/images/enemies/ship.png"
+    battleImagePath: "assets/images/battle/sekai_enemy.png",
     spritePath: "",
     final: false
   },
@@ -153,7 +158,7 @@ const AREAS = [
     voiceLabel: "ナガサレグモ",
     stageCatch: "受け継いだ精神を、空気に流されて忘れる迷い",
     mark: "☁️",
-    hp: 85,
+    hp: 240,
     doubt: "受け継がれた精神を忘れる心",
     intro: "記念館の灯火が、「今さえよければいい」という風に揺らめいている。",
     bossLine: "歴史なんて古いだけ。空気に合わせて流される方が楽だよ。",
@@ -166,6 +171,7 @@ const AREAS = [
     rewardName: "師弟の灯火",
     spriteClass: "enemy-book",
     // 外部画像を使う場合は例： "assets/images/enemies/book.png"
+    battleImagePath: "assets/images/battle/soka_enemy.png",
     spritePath: "",
     final: false
   },
@@ -177,7 +183,7 @@ const AREAS = [
     voiceLabel: "アキラメノオウ",
     stageCatch: "人間をあきらめさせる根本の迷い",
     mark: "👑",
-    hp: 140,
+    hp: 320,
     doubt: "人間をあきらめさせる根本の迷い",
     intro: "すべての迷いが集まる塔。希望のしるしを胸に、最後の一歩へ向かう。",
     bossLine: "人は変われない。希望なんて、すぐに消える幻にすぎない。",
@@ -190,6 +196,7 @@ const AREAS = [
     rewardName: "希望の王冠",
     spriteClass: "enemy-final-boss",
     // 外部画像を使う場合は例： "assets/images/enemies/final-boss.png"
+    battleImagePath: "assets/images/battle/final_enemy.png",
     spritePath: "",
     final: true
   }
