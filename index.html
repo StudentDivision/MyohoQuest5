@@ -4383,6 +4383,128 @@ input.name-input {
   gap: 8px;
 }
 
+  /* ===== 正解後のバトル画面をコンパクト化 ===== */
+
+/* 回答後は敵絵を少しだけ縮めて、解説スペースを確保 */
+.compact-battle-screen.battle-answered .enemy-scene {
+  min-height: 300px;
+}
+
+/* 回答後の4択エリアは、結果サマリーに変える */
+.answer-result-panel {
+  padding: 12px 13px;
+  border-radius: 18px;
+  border: 3px solid #071733;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(232,244,255,0.96));
+  box-shadow:
+    0 4px 0 rgba(5,18,42,0.22),
+    0 10px 18px rgba(0,0,0,0.08);
+}
+
+.answer-result-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.answer-result-badge {
+  flex: 0 0 auto;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow:
+    0 2px 0 rgba(21,128,61,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.answer-result-badge.wrong {
+  background: #ef4444;
+  box-shadow:
+    0 2px 0 rgba(185,28,28,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.answer-result-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: #102033;
+}
+
+.answer-correct-line {
+  margin: 0 0 8px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: rgba(220, 252, 231, 0.92);
+  border: 2px solid rgba(21, 128, 61, 0.55);
+  color: #102033;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.answer-explain {
+  margin: 0;
+  color: #213348;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+/* 解説内の「正解！」などを見やすく */
+.answer-explain strong {
+  color: #fff2a8;
+}
+
+/* 次へボタンを解説パネル内に入れて、すぐ押せるようにする */
+.answer-next-button {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 10px;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+/* 回答後は通常のメッセージ欄を使わない */
+.compact-battle-screen.battle-answered .compact-message {
+  display: none !important;
+}
+
+/* 回答後は下のbtn-areaも使わない */
+.compact-battle-screen.battle-answered > .btn-area {
+  display: none !important;
+}
+
+/* 小さめ画面ではさらに圧縮 */
+@media (max-width: 390px) {
+  .compact-battle-screen.battle-answered .enemy-scene {
+    min-height: 275px;
+  }
+
+  .answer-result-panel {
+    padding: 10px 11px;
+  }
+
+  .answer-correct-line {
+    font-size: 13px;
+    padding: 8px 9px;
+  }
+
+  .answer-explain {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .answer-next-button {
+    min-height: 42px;
+    font-size: 15px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -5286,81 +5408,121 @@ function renderBattle() {
   }
 
   const question = battle.currentQuestion;
-  const enemyPercent = Math.max(0, Math.min(100, (battle.enemyHp / battle.enemyMaxHp) * 100));
-  const playerPercent = Math.max(0, Math.min(100, (battle.playerHp / PLAYER_MAX_HP) * 100));
+
+  const enemyPercent = Math.max(
+    0,
+    Math.min(100, (battle.enemyHp / battle.enemyMaxHp) * 100)
+  );
+
+  const playerPercent = Math.max(
+    0,
+    Math.min(100, (battle.playerHp / PLAYER_MAX_HP) * 100)
+  );
+
   const battleImagePath = getBattleImagePath(battle.area);
   const battleImagePosition = getBattleImagePosition(battle.area);
   const targetQuestions = getBattleTargetQuestions();
   const currentQuestionNumber = Math.min(battle.index, targetQuestions);
 
-  let choicesHtml = "";
+  let choicesOrResultHtml = "";
 
-  question.choices.forEach(function(choice, index) {
-    let resultClass = "";
+  if (!battle.answered) {
+    question.choices.forEach(function(choice, index) {
+      choicesOrResultHtml += `
+        <button
+          onclick="answerQuestion(${index})"
+        >
+          ${escapeHtml(choice)}
+        </button>
+      `;
+    });
 
-    if (battle.answered) {
-      if (index === question.answer) {
-        resultClass = "correct";
-      } else if (index === battle.selected) {
-        resultClass = "wrong";
-      }
-    }
-
-    choicesHtml += `
-      <button
-        class="${resultClass}"
-        onclick="answerQuestion(${index})"
-        ${battle.answered ? "disabled" : ""}
-      >
-        ${escapeHtml(choice)}
-      </button>
+    choicesOrResultHtml = `
+      <div class="compact-choices">
+        ${choicesOrResultHtml}
+      </div>
     `;
-  });
+  } else {
+    const isCorrect = battle.selected === question.answer;
+    const correctText = question.choices[question.answer] || "";
+    const selectedText = question.choices[battle.selected] || "";
+
+    choicesOrResultHtml = `
+      <div class="answer-result-panel">
+        <div class="answer-result-head">
+          <span class="answer-result-badge ${isCorrect ? "" : "wrong"}">
+            ${isCorrect ? "正解" : "確認"}
+          </span>
+          <span class="answer-result-title">
+            ${isCorrect ? "迷いが少し晴れた！" : "答えを確認しよう"}
+          </span>
+        </div>
+
+        <p class="answer-correct-line">
+          正解：${escapeHtml(correctText)}
+        </p>
+
+        ${!isCorrect ? `
+          <p class="answer-explain">
+            選んだ答え：${escapeHtml(selectedText)}
+          </p>
+        ` : ""}
+
+        <p class="answer-explain">
+          ${battle.message}
+        </p>
+
+        <button class="answer-next-button" onclick="nextQuestion()">
+          ${escapeHtml(getBattleWord("nextButton", "次へ"))}
+        </button>
+      </div>
+    `;
+  }
 
   app.innerHTML = `
-    <div class="screen compact-battle-screen">
+    <div class="screen compact-battle-screen ${battle.answered ? "battle-answered" : ""}">
       <div class="topbar">
         <strong>${escapeHtml(battle.area.name)}</strong>
         <button onclick="showAreaSelect()">にげる</button>
       </div>
 
-      <div class="enemy-scene ${battle.area.final ? "final-battle-scene" : ""}">
-  <img
-    class="enemy-scene-image"
-    src="${escapeAttr(battleImagePath)}"
-    alt="${escapeAttr(battle.area.boss || battle.area.name)}"
-    style="object-position:${escapeAttr(battleImagePosition)};"
-  />
+      <div class="enemy-scene ${battle.area.final ? "final-battle-scene" : ""}" id="battleField">
+        <img
+          class="enemy-scene-image"
+          src="${escapeAttr(battleImagePath)}"
+          alt="${escapeAttr(battle.area.boss || battle.area.name)}"
+          style="object-position: ${escapeAttr(battleImagePosition)};"
+        >
 
-  <div class="enemy-scene-overlay"></div>
+        <div class="enemy-scene-overlay"></div>
 
-  <div class="enemy-scene-head">
-    <div class="enemy-name-row">
-      <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
-      <span class="battle-progress-badge">第${currentQuestionNumber}問 / ${targetQuestions}</span>
-    </div>
+        <div class="enemy-scene-head">
+          <div class="enemy-name-row">
+            <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
+            <span class="battle-progress-badge">第${currentQuestionNumber}問 / ${targetQuestions}</span>
+          </div>
 
-    <div class="hp-wrap">
-      <div class="hp" style="width:${enemyPercent}%"></div>
-    </div>
+          <div class="hp-wrap">
+            <div class="hp" style="width:${enemyPercent}%"></div>
+          </div>
 
-    <span class="enemy-hp-label">
-      <span>迷いゲージ</span>
-      <span>${battle.enemyHp} / ${battle.enemyMaxHp}</span>
-    </span>
-  </div>
+          <span class="enemy-hp-label">
+            <span>迷いゲージ</span>
+            <span>${battle.enemyHp} / ${battle.enemyMaxHp}</span>
+          </span>
+        </div>
 
-  <div class="player-mini-status compact-player-status">
-    <strong>${escapeHtml(getPlayerName())} & ソラ</strong>
-    <div class="hp-wrap">
-      <div class="hp" style="width:${playerPercent}%"></div>
-    </div>
-    <span class="small">
-      <span>HP</span>
-      <span>${battle.playerHp} / ${PLAYER_MAX_HP}</span>
-    </span>
-  </div>
-</div>
+        <div class="player-mini-status compact-player-status">
+          <strong>${escapeHtml(getPlayerName())} & ソラ</strong>
+          <div class="hp-wrap">
+            <div class="hp" style="width:${playerPercent}%"></div>
+          </div>
+          <span class="small">
+            <span>HP</span>
+            <span>${battle.playerHp} / ${PLAYER_MAX_HP}</span>
+          </span>
+        </div>
+      </div>
 
       <div class="box compact-question-box">
         <div class="question-tags">
@@ -5370,9 +5532,7 @@ function renderBattle() {
         <p class="question">${escapeHtml(question.question)}</p>
       </div>
 
-      <div class="compact-choices">
-        ${choicesHtml}
-      </div>
+      ${choicesOrResultHtml}
 
       <div class="message compact-message">
         ${battle.message}
