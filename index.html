@@ -5100,6 +5100,16 @@ function getBattleTargetQuestions() {
   return 10;
 }
 
+function getBattleImagePath(area) {
+  if (!area) return "assets/images/battle/review_enemy.jpg";
+  return area.battleImagePath || "assets/images/battle/review_enemy.jpg";
+}
+
+function getBattleImagePosition(area) {
+  if (!area) return "center center";
+  return area.battleImagePosition || "center center";
+}
+
 function renderBattle() {
   if (!battle || !battle.currentQuestion) {
     showAreaSelect();
@@ -5110,6 +5120,7 @@ function renderBattle() {
   const enemyPercent = Math.max(0, Math.min(100, (battle.enemyHp / battle.enemyMaxHp) * 100));
   const playerPercent = Math.max(0, Math.min(100, (battle.playerHp / PLAYER_MAX_HP) * 100));
   const battleImagePath = getBattleImagePath(battle.area);
+  const battleImagePosition = getBattleImagePosition(battle.area);
   const targetQuestions = getBattleTargetQuestions();
   const currentQuestionNumber = Math.min(battle.index, targetQuestions);
 
@@ -5144,38 +5155,43 @@ function renderBattle() {
         <button onclick="showAreaSelect()">にげる</button>
       </div>
 
-      <div
-        class="enemy-scene ${battle.area.final ? "final-battle-scene" : ""}"
-        id="battleField"
-        style="--battle-image: url('${escapeAttr(battleImagePath)}');"
-      >
-        <div class="enemy-scene-head">
-          <div class="enemy-name-row">
-            <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
-            <span class="battle-progress-badge">第${currentQuestionNumber}問 / ${targetQuestions}</span>
-          </div>
+      <div class="enemy-scene ${battle.area.final ? "final-battle-scene" : ""}">
+  <img
+    class="enemy-scene-image"
+    src="${escapeAttr(battleImagePath)}"
+    alt="${escapeAttr(battle.area.boss || battle.area.name)}"
+    style="object-position:${escapeAttr(battleImagePosition)};"
+  />
 
-          <div class="hp-wrap">
-            <div class="hp" style="width:${enemyPercent}%"></div>
-          </div>
+  <div class="enemy-scene-overlay"></div>
 
-          <span class="enemy-hp-label">
-            <span>迷いゲージ</span>
-            <span>${battle.enemyHp} / ${battle.enemyMaxHp}</span>
-          </span>
-        </div>
+  <div class="enemy-scene-head">
+    <div class="enemy-name-row">
+      <strong>迷いの声：${escapeHtml(battle.area.voiceLabel || battle.area.boss)}</strong>
+      <span class="battle-progress-badge">第${currentQuestionNumber}問 / ${targetQuestions}</span>
+    </div>
 
-        <div class="player-mini-status">
-          <strong>${escapeHtml(getPlayerName())} & ソラ</strong>
-          <div class="hp-wrap">
-            <div class="hp" style="width:${playerPercent}%"></div>
-          </div>
-          <span class="small">
-            <span>HP</span>
-            <span>${battle.playerHp} / ${PLAYER_MAX_HP}</span>
-          </span>
-        </div>
-      </div>
+    <div class="hp-wrap">
+      <div class="hp" style="width:${enemyPercent}%"></div>
+    </div>
+
+    <span class="enemy-hp-label">
+      <span>迷いゲージ</span>
+      <span>${battle.enemyHp} / ${battle.enemyMaxHp}</span>
+    </span>
+  </div>
+
+  <div class="player-mini-status compact-player-status">
+    <strong>${escapeHtml(getPlayerName())} & ソラ</strong>
+    <div class="hp-wrap">
+      <div class="hp" style="width:${playerPercent}%"></div>
+    </div>
+    <span class="small">
+      <span>HP</span>
+      <span>${battle.playerHp} / ${PLAYER_MAX_HP}</span>
+    </span>
+  </div>
+</div>
 
       <div class="box compact-question-box">
         <div class="question-tags">
