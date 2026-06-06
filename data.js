@@ -54,7 +54,7 @@ const AREAS = [
     clearHeadline: "迷いが、ひとつ晴れた。",
     clearLead: "知らないままでいいという霧がほどけ、森に学びの光が差し込んだ。",
     clearSoraLine: "迷いの霧が、光へ変わっていく！",
-    clearCompanionText: "シラナイママはやわらかな光となり、旅路を見守る存在へ変わっていく。",
+    clearCompanionText: "シラナイママはやわらかな光となり、旅路を見守る存在へ変わっていく。"
   },
   {
     id: "shingyo",
@@ -80,12 +80,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/shingyo_enemy.png",
     spritePath: "",
     battleImagePosition: "center 34%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/shingyo_clear.png",
     clearHeadline: "一歩の光が、道をひらいた。",
     clearLead: "先延ばしの迷いがほどけ、道場には前進の風が満ちていった。",
     clearSoraLine: "小さな一歩が、大きな勇気になりましたね！",
-    clearCompanionText: "アトデヤルは重い影を脱ぎ捨て、挑戦を静かに後押しする存在へ変わっていく。",
+    clearCompanionText: "アトデヤルは重い影を脱ぎ捨て、挑戦を静かに後押しする存在へ変わっていく。"
   },
   {
     id: "seimei",
@@ -111,12 +111,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/seimei_enemy.png",
     spritePath: "",
     battleImagePosition: "center 38%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/seimei_clear.png",
     clearHeadline: "湖面に、希望が映った。",
     clearLead: "比べるまなざしがほどけ、一人ひとりの生命の輝きが湖に映りはじめた。",
     clearSoraLine: "この湖は、もう比べるための鏡ではありません！",
-    clearCompanionText: "ヒカクノメは澄んだ光へ変わり、それぞれの生命の尊さを映す見守り手となった。",
+    clearCompanionText: "ヒカクノメは澄んだ光へ変わり、それぞれの生命の尊さを映す見守り手となった。"
   },
   {
     id: "jiyu",
@@ -142,12 +142,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/jiyu_enemy.png",
     spritePath: "",
     battleImagePosition: "center 40%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/jiyu_clear.png",
     clearHeadline: "使命の風が、大地を渡る。",
     clearLead: "自分だけを守ろうとする殻がほどけ、大地には人のために生きる風が吹き始めた。",
     clearSoraLine: "優しさは、自分を越えて広がっていくんですね……！",
-    clearCompanionText: "ジブンダケは閉じた殻を破り、人と人をつなぐ希望の種へと姿を変えていく。",
+    clearCompanionText: "ジブンダケは閉じた殻を破り、人と人をつなぐ希望の種へと姿を変えていく。"
   },
   {
     id: "sekai",
@@ -173,12 +173,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/sekai_enemy.png",
     spritePath: "",
     battleImagePosition: "center 36%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/sekai_clear.png",
     clearHeadline: "対話の航路が、開かれた。",
     clearLead: "決めつけの霧が晴れ、港には励ましを運ぶ風と対話の航路が戻ってきた。",
     clearSoraLine: "話してみることで、見える景色ってあるんですね！",
-    clearCompanionText: "キメツケロードは硬い輪郭を解き、対話を見守る穏やかな灯台の光へと変わっていく。",
+    clearCompanionText: "キメツケロードは硬い輪郭を解き、対話を見守る穏やかな灯台の光へと変わっていく。"
   },
   {
     id: "soka",
@@ -204,12 +204,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/soka_enemy.png",
     spritePath: "",
     battleImagePosition: "center 36%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/soka_clear.png",
     clearHeadline: "受け継ぐ光が、未来を照らす。",
     clearLead: "流される心が静まり、受け継がれてきた灯火が、再び記念館に強くともった。",
     clearSoraLine: "歴史は、今を照らす希望の灯なんですね！",
-    clearCompanionText: "ナガサレグモは漂う影をほどき、受け継ぐ心をそっと照らす光へと変わっていく。",
+    clearCompanionText: "ナガサレグモは漂う影をほどき、受け継ぐ心をそっと照らす光へと変わっていく。"
   },
   {
     id: "tower",
@@ -235,12 +235,12 @@ const AREAS = [
     battleImagePath: "assets/images/battle/final_enemy.png",
     spritePath: "",
     battleImagePosition: "center 32%",
-    final: true
+    final: true,
     clearScenePath: "assets/images/clear/tower_clear.png",
     clearHeadline: "希望は、世界へひらかれた。",
     clearLead: "あきらめの闇は晴れ、学びと励ましの光が、新たな時代へと広がっていった。",
     clearSoraLine: "ここから先は、希望を届ける本当の旅ですね！",
-    clearCompanionText: "アキラメノオウの闇は光へと還り、人間の可能性を見守る大いなる希望へ変わっていく。",
+    clearCompanionText: "アキラメノオウの闇は光へと還り、人間の可能性を見守る大いなる希望へ変わっていく。"
   }
 ];
 
