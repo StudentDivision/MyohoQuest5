@@ -6703,7 +6703,7 @@ function showVictory() {
 
   const clearHeadline = battle.area.clearHeadline || "迷いが、ひとつ晴れた。";
   const clearLead = battle.area.clearLead || battle.area.clearText || "迷いは光に変わり、新たな道がひらけた。";
-  const clearSoraLine = battle.area.clearSoraLine || pickLine("victory");
+  const clearEnemyLine = battle.area.clearEnemyLine || `${battle.area.boss || "迷い"}「迷いが、少し晴れていく……。」`;
 
   const nextButtonHtml = nextArea
     ? `<button onclick="startBattle('${escapeAttr(nextArea.id)}')">次の地へ進む</button>`
@@ -6745,8 +6745,8 @@ function showVictory() {
       </section>
 
       <section class="box clear-story-box">
-        <h2>ソラのことば</h2>
-        <p>ソラ「${escapeHtml(clearSoraLine)}」</p>
+        <h2>晴れた心の声</h2>
+        <p>${escapeHtml(clearEnemyLine)}</p>
       </section>
 
       <div class="clear-grid">
