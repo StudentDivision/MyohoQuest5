@@ -52,6 +52,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/nichiren_clear.png",
     clearHeadline: "迷いが、ひとつ晴れた。",
     clearLead: "知らないままでいいという霧がほどけ、森に学びの光が差し込んだ。",
+    clearEnemyLine: "シラナイママ「知らないままでいるのは、少し怖かっただけなんだね……。」",
     clearSoraLine: "迷いの霧が、光へ変わっていく！",
     clearCompanionText: "シラナイママはやわらかな光となり、旅路を見守る存在へ変わっていく。"
   },
@@ -82,6 +83,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/shingyo_clear.png",
     clearHeadline: "一歩の光が、道をひらいた。",
     clearLead: "先延ばしの迷いがほどけ、道場には前進の風が満ちていった。",
+    clearEnemyLine: "アトデヤル「明日じゃなくて、今から一歩だけ進んでみるよ。」",
     clearSoraLine: "小さな一歩が、大きな勇気になりましたね！",
     clearCompanionText: "アトデヤルは重い影を脱ぎ捨て、挑戦を静かに後押しする存在へ変わっていく。"
   },
@@ -112,6 +114,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/seimei_clear.png",
     clearHeadline: "湖面に、希望が映った。",
     clearLead: "比べるまなざしがほどけ、一人ひとりの生命の輝きが湖に映りはじめた。",
+    clearEnemyLine: "ヒカクノメ「私は、私の可能性を信じてみたい……。」",
     clearSoraLine: "この湖は、もう比べるための鏡ではありません！",
     clearCompanionText: "ヒカクノメは澄んだ光へ変わり、それぞれの生命の尊さを映す見守り手となった。"
   },
@@ -142,6 +145,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/jiyu_clear.png",
     clearHeadline: "使命の風が、大地を渡る。",
     clearLead: "自分だけを守ろうとする殻がほどけ、大地には人のために生きる風が吹き始めた。",
+    clearEnemyLine: "ジブンダケ「守るだけじゃなく、誰かと進む道もあるんだね。」",
     clearSoraLine: "優しさは、自分を越えて広がっていくんですね……！",
     clearCompanionText: "ジブンダケは閉じた殻を破り、人と人をつなぐ希望の種へと姿を変えていく。"
   },
@@ -173,6 +177,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/sekai_clear.png",
     clearHeadline: "対話の航路が、開かれた。",
     clearLead: "決めつけの霧が晴れ、港には励ましを運ぶ風と対話の航路が戻ってきた。",
+    clearEnemyLine: "キメツケロード「決めつける前に、対話をすることが強さなんだね……。」",
     clearSoraLine: "話してみることで、見える景色ってあるんですね！",
     clearCompanionText: "キメツケロードは硬い輪郭を解き、対話を見守る穏やかな灯台の光へと変わっていく。"
   },
@@ -204,6 +209,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/soka_clear.png",
     clearHeadline: "受け継ぐ光が、未来を照らす。",
     clearLead: "流される心が静まり、受け継がれてきた灯火が、再び記念館に強くともった。",
+    clearEnemyLine: "ナガサレグモ「流されるだけじゃなく、受け継いだ灯を抱いて進みたい。」",
     clearSoraLine: "歴史は、今を照らす希望の灯なんですね！",
     clearCompanionText: "ナガサレグモは漂う影をほどき、受け継ぐ心をそっと照らす光へと変わっていく。"
   },
@@ -235,6 +241,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/tower_clear.png",
     clearHeadline: "希望は、世界へひらかれた。",
     clearLead: "あきらめの闇は晴れ、学びと励ましの光が、新たな時代へと広がっていった。",
+    clearEnemyLine: "アキラメノオウ「それでも、人は変われるんだね……。」",
     clearSoraLine: "ここから先は、希望を届ける本当の旅ですね！",
     clearCompanionText: "アキラメノオウの闇は光へと還り、人間の可能性を見守る大いなる希望へ変わっていく。"
   }
