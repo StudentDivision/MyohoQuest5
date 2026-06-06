@@ -5071,6 +5071,211 @@ input.name-input {
   }
 }
 
+    /* =========================
+   ステージクリア画面 完成版
+========================= */
+
+.clear-screen {
+  gap: 12px;
+  padding-bottom: 28px;
+}
+
+.clear-hero {
+  position: relative;
+  min-height: 430px;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 3px solid #0f274a;
+  background-color: #10264d;
+  background-size: cover;
+  background-position: center center;
+  box-shadow:
+    0 6px 0 rgba(5, 18, 42, 0.42),
+    0 18px 28px rgba(0, 0, 0, 0.22);
+}
+
+.clear-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 18, 42, 0.18) 0%,
+      rgba(5, 18, 42, 0.06) 28%,
+      rgba(5, 18, 42, 0.34) 66%,
+      rgba(5, 18, 42, 0.82) 100%
+    );
+}
+
+.clear-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255,255,255,0.30) 0%, transparent 28%),
+    radial-gradient(circle at 80% 14%, rgba(255,242,168,0.16) 0%, transparent 22%);
+  pointer-events: none;
+}
+
+.clear-hero-head {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.clear-stage-kicker {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(10, 33, 69, 0.86);
+  border: 2px solid rgba(244, 208, 111, 0.9);
+  color: #fff3b0;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.clear-stage-name {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.88);
+  color: #102a43;
+  font-size: 11px;
+  font-weight: 900;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.clear-hero-content {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+}
+
+.clear-hero h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.15;
+  color: #fff8d6;
+  letter-spacing: 0.03em;
+  text-shadow:
+    0 2px 0 rgba(5, 18, 42, 0.85),
+    0 0 18px rgba(244, 208, 111, 0.35);
+}
+
+.clear-lead {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.42);
+}
+
+.clear-companion {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(7, 23, 51, 0.54);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #e8f4ff;
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.clear-story-box h2,
+.clear-learn-card h2,
+.clear-next-box h2 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.clear-story-box p {
+  margin: 0 0 10px;
+  line-height: 1.7;
+}
+
+.clear-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.clear-reward-card {
+  text-align: center;
+}
+
+.clear-reward-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #8a5a00;
+  letter-spacing: 0.04em;
+}
+
+.clear-reward-name {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+  color: #102a43;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+}
+
+.clear-reward-note {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #34495e;
+}
+
+.clear-next-copy {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.clear-actions {
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.clear-actions button {
+  min-height: 52px;
+}
+
+/* 小さめスマホ用 */
+@media (max-width: 390px) {
+  .clear-hero {
+    min-height: 390px;
+  }
+
+  .clear-hero h1 {
+    font-size: 28px;
+  }
+
+  .clear-lead {
+    font-size: 14px;
+  }
+
+  .clear-companion {
+    font-size: 12px;
+  }
+
+  .clear-reward-name {
+    font-size: 26px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -6213,6 +6418,40 @@ function nextQuestion() {
   renderBattle();
 }
 
+  function getNextStoryArea(currentId) {
+  const currentIndex = SAFE_AREAS.findIndex(function(area) {
+    return area.id === currentId;
+  });
+
+  if (currentIndex < 0) return null;
+
+  for (let i = currentIndex + 1; i < SAFE_AREAS.length; i++) {
+    return SAFE_AREAS[i];
+  }
+
+  return null;
+}
+
+function buildLearnListHtml(area) {
+  const learnItems = Array.isArray(area.learn) ? area.learn : [];
+
+  if (!learnItems.length) {
+    return "<li>学びを希望へ変えること</li>";
+  }
+
+  return learnItems.map(function(item) {
+    return `<li>${escapeHtml(item)}</li>`;
+  }).join("");
+}
+
+function getClearScenePath(area) {
+  if (area.clearScenePath && String(area.clearScenePath).trim()) {
+    return area.clearScenePath;
+  }
+
+  return "";
+}
+
 function showVictory() {
   if (!battle) {
     showAreaSelect();
@@ -6230,46 +6469,84 @@ function showVictory() {
     return;
   }
 
-  let learnHtml = "";
-  const learnItems = Array.isArray(battle.area.learn) ? battle.area.learn : [];
+  const nextArea = getNextStoryArea(battle.area.id);
+  const learnHtml = buildLearnListHtml(battle.area);
+  const clearScenePath = getClearScenePath(battle.area);
 
-  learnItems.forEach(function(item) {
-    learnHtml += `<li>${escapeHtml(item)}</li>`;
-  });
+  const clearHeadline = battle.area.clearHeadline || "迷いが、ひとつ晴れた。";
+  const clearLead = battle.area.clearLead || battle.area.clearText || "迷いは光に変わり、新たな道がひらけた。";
+  const clearSoraLine = battle.area.clearSoraLine || pickLine("victory");
+  const clearCompanionText = battle.area.clearCompanionText || "迷いはやわらかな光へ変わり、旅を見守る存在となった。";
+
+  const nextButtonHtml = nextArea
+    ? `<button onclick="startBattle('${escapeAttr(nextArea.id)}')">次の地へ進む</button>`
+    : `<button onclick="showAreaSelect()">冒険マップへ</button>`;
+
+  const nextCopy = nextArea
+    ? `晴れた空の先には、次なる地「${escapeHtml(nextArea.name)}」が待っています。ソラとともに、新たな迷いを希望へ変える旅へ進みましょう。`
+    : `すべての旅路は、さらに大きな希望へと続いています。冒険マップを開き、次の一歩を選びましょう。`;
+
+  const heroStyle = clearScenePath
+    ? `style="background-image:url('${escapeAttr(clearScenePath)}');"`
+    : "";
 
   app.innerHTML = `
-    <div class="screen victory-glow">
-      <div class="title-box">
-        <div class="title-inner">
-          <div class="crest">✨</div>
-          <h1>勝利！</h1>
-          <p class="subtitle">${escapeHtml(battle.area.name)}の迷いが晴れました</p>
+    <div class="screen clear-screen victory-glow">
+      <div class="topbar">
+        <strong>章クリア</strong>
+        <button onclick="showAreaSelect()">冒険マップ</button>
+      </div>
+
+      <section class="clear-hero" ${heroStyle}>
+        <div class="clear-hero-head">
+          <span class="clear-stage-kicker">STAGE CLEAR</span>
+          <span class="clear-stage-name">${escapeHtml(battle.area.name)}</span>
         </div>
-      </div>
 
-      <div class="box command-window">
-        <p>ソラ「${escapeHtml(pickLine("victory"))}」</p>
-        <p>${escapeHtml(battle.area.clearText || "迷いの霧が晴れていきます。")}</p>
-      </div>
+        <div class="clear-hero-content">
+          <h1>${escapeHtml(clearHeadline)}</h1>
+          <p class="clear-lead">${escapeHtml(clearLead)}</p>
+          <p class="clear-companion">${escapeHtml(clearCompanionText)}</p>
+        </div>
+      </section>
 
-      <div class="reward-card">
-        <h2>${escapeHtml(getBattleWord("rewardText", "希望の武器を手に入れた！"))}</h2>
-        <p><strong>${escapeHtml(battle.area.rewardName || "希望のしるし")}</strong></p>
-      </div>
+      <section class="box clear-story-box">
+        <h2>ソラのことば</h2>
+        <p>ソラ「${escapeHtml(clearSoraLine)}」</p>
+        <p class="small">${escapeHtml(battle.area.clearText || "迷いの霧が晴れ、新しい希望の道が開かれました。")}</p>
+      </section>
 
-      <div class="box">
-        <h2>${escapeHtml(getBattleWord("learnedText", "今回学んだこと"))}</h2>
-        <ul class="learn-list">
-          ${learnHtml || "<li>学びを力に変えること</li>"}
-        </ul>
-      </div>
+      <div class="clear-grid">
+        <section class="reward-card clear-reward-card">
+          <p class="clear-reward-kicker">HOPE SIGN ACQUIRED</p>
+          <p class="clear-reward-name">${escapeHtml(battle.area.rewardName || "希望のしるし")}</p>
+          <p class="clear-reward-note">
+            この地で得た学びと励ましが、次の旅路を照らす力になります。
+          </p>
+        </section>
 
-      <div class="btn-area">
-        <button onclick="showAreaSelect()">${escapeHtml(getBattleWord("areaSelectButton", "エリア選択へ"))}</button>
-        <button class="sub" onclick="showStats()">${escapeHtml(getBattleWord("statsButton", "成績を見る"))}</button>
+        <section class="box clear-learn-card">
+          <h2>旅の記録</h2>
+          <ul class="learn-list">
+            ${learnHtml}
+          </ul>
+        </section>
+
+        <section class="box clear-next-box">
+          <h2>次なる旅路</h2>
+          <p class="clear-next-copy">${nextCopy}</p>
+
+          <div class="btn-area clear-actions">
+            ${nextButtonHtml}
+            <button class="sub" onclick="showAreaSelect()">冒険マップへ</button>
+            <button class="sub" onclick="showStats()">成績を見る</button>
+          </div>
+        </section>
       </div>
     </div>
   `;
+
+  injectBgmButton();
 }
 
 function showDefeat() {
