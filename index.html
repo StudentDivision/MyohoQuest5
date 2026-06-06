@@ -5276,6 +5276,234 @@ input.name-input {
   }
 }
 
+/* =====================================================
+   ステージクリア画面：横長PNGを全部見せる＋コンパクト版
+===================================================== */
+
+.clear-screen {
+  gap: 8px !important;
+  padding: 8px !important;
+  padding-bottom: 18px !important;
+}
+
+/* クリア画面の上部バーを低く */
+.clear-screen .topbar {
+  min-height: 42px !important;
+  padding: 8px 12px !important;
+  border-radius: 20px !important;
+}
+
+.clear-screen .topbar strong {
+  font-size: 15px !important;
+}
+
+.clear-screen .topbar button {
+  min-height: 32px !important;
+  padding: 5px 12px !important;
+  font-size: 13px !important;
+}
+
+/* クリアイラスト枠：background-imageではなくimgで表示 */
+.clear-hero {
+  position: relative;
+  min-height: auto !important;
+  aspect-ratio: 16 / 9;
+  border-radius: 22px !important;
+  overflow: hidden;
+  border: 3px solid #0f274a;
+  background:
+    linear-gradient(180deg, #dff3ff, #f9fbff) !important;
+  box-shadow:
+    0 4px 0 rgba(5, 18, 42, 0.35),
+    0 12px 20px rgba(0, 0, 0, 0.16) !important;
+}
+
+/* 既存の暗い被せを弱める */
+.clear-hero::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 18, 42, 0.10) 0%,
+      rgba(5, 18, 42, 0.00) 38%,
+      rgba(5, 18, 42, 0.34) 100%
+    ) !important;
+  z-index: 1;
+}
+
+.clear-hero::after {
+  z-index: 1;
+}
+
+/* 横長PNGを全部表示 */
+.clear-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.45), rgba(220,238,255,0.20));
+}
+
+/* STAGE CLEARなどを小さく */
+.clear-hero-head {
+  top: 10px !important;
+  left: 10px !important;
+  right: 10px !important;
+  z-index: 3 !important;
+}
+
+.clear-stage-kicker,
+.clear-stage-name {
+  padding: 5px 10px !important;
+  font-size: 10px !important;
+}
+
+/* 画像上のテキストをコンパクトに */
+.clear-hero-content {
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 10px !important;
+  z-index: 3 !important;
+}
+
+.clear-hero h1 {
+  margin: 0 0 4px !important;
+  font-size: 24px !important;
+  line-height: 1.18 !important;
+}
+
+.clear-lead {
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+/* 画像上の長い説明は非表示にして圧縮 */
+.clear-companion {
+  display: none !important;
+}
+
+/* ソラのことばを圧縮 */
+.clear-story-box {
+  padding: 11px 13px !important;
+  border-radius: 18px !important;
+}
+
+.clear-story-box h2 {
+  font-size: 17px !important;
+  margin: 0 0 6px !important;
+}
+
+.clear-story-box p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* ソラのことば内の補足文は隠して短くする */
+.clear-story-box .small {
+  display: none !important;
+}
+
+/* 報酬カードを低く */
+.clear-reward-card {
+  padding: 12px 14px !important;
+  border-radius: 18px !important;
+}
+
+.clear-reward-kicker {
+  margin: 0 0 4px !important;
+  font-size: 11px !important;
+}
+
+.clear-reward-name {
+  font-size: 23px !important;
+  line-height: 1.2 !important;
+}
+
+.clear-reward-note {
+  display: none !important;
+}
+
+/* 旅の記録をコンパクト */
+.clear-learn-card {
+  padding: 11px 13px !important;
+  border-radius: 18px !important;
+}
+
+.clear-learn-card h2 {
+  font-size: 17px !important;
+  margin: 0 0 6px !important;
+}
+
+.clear-learn-card .learn-list {
+  margin: 0 !important;
+  padding-left: 1.2em !important;
+}
+
+.clear-learn-card .learn-list li {
+  margin: 2px 0 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+/* 次なる旅路を圧縮 */
+.clear-next-box {
+  padding: 11px 13px !important;
+  border-radius: 18px !important;
+}
+
+.clear-next-box h2 {
+  font-size: 17px !important;
+  margin: 0 0 5px !important;
+}
+
+.clear-next-copy {
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  margin: 0 0 8px !important;
+}
+
+/* ボタンを低く */
+.clear-actions {
+  margin-top: 6px !important;
+  gap: 6px !important;
+}
+
+.clear-actions button {
+  min-height: 42px !important;
+  font-size: 14px !important;
+  border-radius: 16px !important;
+}
+
+/* 成績ボタンは画面圧縮のため非表示 */
+.clear-actions .clear-stats-button {
+  display: none !important;
+}
+
+/* 小さい端末ではさらに圧縮 */
+@media (max-width: 390px) {
+  .clear-hero h1 {
+    font-size: 22px !important;
+  }
+
+  .clear-lead {
+    font-size: 11.5px !important;
+  }
+
+  .clear-story-box p,
+  .clear-learn-card .learn-list li {
+    font-size: 12.5px !important;
+  }
+
+  .clear-reward-name {
+    font-size: 21px !important;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -6476,18 +6704,23 @@ function showVictory() {
   const clearHeadline = battle.area.clearHeadline || "迷いが、ひとつ晴れた。";
   const clearLead = battle.area.clearLead || battle.area.clearText || "迷いは光に変わり、新たな道がひらけた。";
   const clearSoraLine = battle.area.clearSoraLine || pickLine("victory");
-  const clearCompanionText = battle.area.clearCompanionText || "迷いはやわらかな光へ変わり、旅を見守る存在となった。";
 
   const nextButtonHtml = nextArea
     ? `<button onclick="startBattle('${escapeAttr(nextArea.id)}')">次の地へ進む</button>`
     : `<button onclick="showAreaSelect()">冒険マップへ</button>`;
 
   const nextCopy = nextArea
-    ? `晴れた空の先には、次なる地「${escapeHtml(nextArea.name)}」が待っています。ソラとともに、新たな迷いを希望へ変える旅へ進みましょう。`
-    : `すべての旅路は、さらに大きな希望へと続いています。冒険マップを開き、次の一歩を選びましょう。`;
+    ? `次なる地「${escapeHtml(nextArea.name)}」へ。ソラとともに、新たな迷いを希望へ変える旅へ進みましょう。`
+    : `冒険マップを開き、次の一歩を選びましょう。`;
 
-  const heroStyle = clearScenePath
-    ? `style="background-image:url('${escapeAttr(clearScenePath)}');"`
+  const clearImageHtml = clearScenePath
+    ? `
+      <img
+        class="clear-hero-image"
+        src="${escapeAttr(clearScenePath)}"
+        alt="${escapeAttr(battle.area.name)}のクリアイラスト"
+      >
+    `
     : "";
 
   app.innerHTML = `
@@ -6497,7 +6730,9 @@ function showVictory() {
         <button onclick="showAreaSelect()">冒険マップ</button>
       </div>
 
-      <section class="clear-hero" ${heroStyle}>
+      <section class="clear-hero">
+        ${clearImageHtml}
+
         <div class="clear-hero-head">
           <span class="clear-stage-kicker">STAGE CLEAR</span>
           <span class="clear-stage-name">${escapeHtml(battle.area.name)}</span>
@@ -6506,23 +6741,18 @@ function showVictory() {
         <div class="clear-hero-content">
           <h1>${escapeHtml(clearHeadline)}</h1>
           <p class="clear-lead">${escapeHtml(clearLead)}</p>
-          <p class="clear-companion">${escapeHtml(clearCompanionText)}</p>
         </div>
       </section>
 
       <section class="box clear-story-box">
         <h2>ソラのことば</h2>
         <p>ソラ「${escapeHtml(clearSoraLine)}」</p>
-        <p class="small">${escapeHtml(battle.area.clearText || "迷いの霧が晴れ、新しい希望の道が開かれました。")}</p>
       </section>
 
       <div class="clear-grid">
         <section class="reward-card clear-reward-card">
           <p class="clear-reward-kicker">HOPE SIGN ACQUIRED</p>
           <p class="clear-reward-name">${escapeHtml(battle.area.rewardName || "希望のしるし")}</p>
-          <p class="clear-reward-note">
-            この地で得た学びと励ましが、次の旅路を照らす力になります。
-          </p>
         </section>
 
         <section class="box clear-learn-card">
@@ -6539,7 +6769,7 @@ function showVictory() {
           <div class="btn-area clear-actions">
             ${nextButtonHtml}
             <button class="sub" onclick="showAreaSelect()">冒険マップへ</button>
-            <button class="sub" onclick="showStats()">成績を見る</button>
+            <button class="sub clear-stats-button" onclick="showStats()">成績を見る</button>
           </div>
         </section>
       </div>
