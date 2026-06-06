@@ -49,7 +49,7 @@ const AREAS = [
     battleImagePath: "assets/images/battle/nichiren_enemy.png",
     spritePath: "",
     battleImagePosition: "center 42%",
-    final: false
+    final: false,
     clearScenePath: "assets/images/clear/nichiren_clear.png",
     clearHeadline: "迷いが、ひとつ晴れた。",
     clearLead: "知らないままでいいという霧がほどけ、森に学びの光が差し込んだ。",
