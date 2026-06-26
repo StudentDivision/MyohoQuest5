@@ -5504,6 +5504,168 @@ input.name-input {
   }
 }
 
+  /* =========================
+   タイトル画面：文字とボタンをコンパクト化
+========================= */
+
+.title-screen .title-logo h1,
+.title-screen .game-title,
+.title-screen .title-main-title {
+  font-size: clamp(34px, 8vw, 48px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+  text-shadow:
+    0 3px 0 rgba(5, 18, 42, 0.9),
+    0 0 18px rgba(255, 244, 180, 0.35) !important;
+}
+
+.title-screen .title-sub,
+.title-screen .subtitle {
+  font-size: clamp(11px, 2.8vw, 14px) !important;
+  padding: 5px 12px !important;
+  line-height: 1.25 !important;
+}
+
+.title-screen .title-copy,
+.title-screen .title-catch,
+.title-screen .title-catch-main {
+  font-size: clamp(22px, 5.6vw, 32px) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 6px !important;
+}
+
+.title-screen .title-player-row,
+.title-screen .title-profile-row {
+  font-size: 13px !important;
+  gap: 8px !important;
+  margin: 4px 0 8px !important;
+}
+
+.title-actions {
+  gap: 8px !important;
+}
+
+.title-actions button {
+  min-height: 48px !important;
+  font-size: 17px !important;
+  border-radius: 18px !important;
+}
+
+/* 成績を見る・感想を送るを横並びにする */
+.title-mini-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}
+
+.title-mini-button {
+  min-height: 42px !important;
+  font-size: 14px !important;
+  border-radius: 16px !important;
+}
+
+.feedback-button {
+  background:
+    linear-gradient(180deg, #ffffff, #e8f7ff) !important;
+}
+
+@media (max-width: 390px) {
+  .title-screen .title-logo h1,
+  .title-screen .game-title,
+  .title-screen .title-main-title {
+    font-size: 32px !important;
+  }
+
+  .title-actions button {
+    min-height: 45px !important;
+    font-size: 16px !important;
+  }
+
+  .title-mini-button {
+    min-height: 40px !important;
+    font-size: 13px !important;
+  }
+}
+
+  /* =========================
+   BGMボタン：右上ではなく下部余白に固定
+========================= */
+
+#bgmToggle,
+.bgm-toggle,
+.music-toggle,
+.bgm-button {
+  position: fixed !important;
+  top: auto !important;
+  right: auto !important;
+  left: 50% !important;
+  bottom: max(10px, env(safe-area-inset-bottom)) !important;
+  transform: translateX(-50%) !important;
+
+  width: min(360px, calc(100vw - 34px)) !important;
+  max-width: 420px !important;
+  height: 38px !important;
+
+  z-index: 9999 !important;
+  border-radius: 999px !important;
+  border: 2px solid rgba(255, 244, 180, 0.95) !important;
+  background: rgba(7, 23, 51, 0.88) !important;
+  color: #fff8d6 !important;
+
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+
+  box-shadow:
+    0 3px 0 rgba(5, 18, 42, 0.45),
+    0 8px 18px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+}
+
+/* 下部固定ボタンのぶん、画面下に余白を作る */
+.screen {
+  padding-bottom: 58px !important;
+}
+
+/* =========================
+   BGMボタン：右上から下部へ移動
+========================= */
+
+.bgm-toggle,
+#bgmToggle {
+  position: fixed !important;
+  top: auto !important;
+  right: auto !important;
+  left: 50% !important;
+  bottom: max(10px, env(safe-area-inset-bottom)) !important;
+  transform: translateX(-50%) !important;
+
+  width: min(360px, calc(100vw - 34px)) !important;
+  height: 38px !important;
+
+  z-index: 9999 !important;
+  border-radius: 999px !important;
+  border: 2px solid rgba(255, 244, 180, 0.95) !important;
+  background: rgba(7, 23, 51, 0.88) !important;
+  color: #fff8d6 !important;
+
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+
+  box-shadow:
+    0 3px 0 rgba(5, 18, 42, 0.45),
+    0 8px 18px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+}
+
+/* 下部固定ボタンのぶん、各画面の下に余白を作る */
+.screen {
+  padding-bottom: 58px !important;
+}
+    
   </style>
 </head>
 <body>
@@ -5513,6 +5675,21 @@ input.name-input {
   <script src="data.js"></script>
 
   <script>
+const FEEDBACK_FORM_URL = "https://forms.gle/VbbskZj5JjZajL5r7";
+
+function openFeedbackForm() {
+  if (!FEEDBACK_FORM_URL || FEEDBACK_FORM_URL.includes("ここに")) {
+    alert("感想フォームのURLがまだ設定されていません。");
+    return;
+  }
+
+  const opened = window.open(FEEDBACK_FORM_URL, "_blank", "noopener,noreferrer");
+
+  if (!opened) {
+    location.href = FEEDBACK_FORM_URL;
+  }
+}
+    
 const SAVE_KEY = "myoho_quest_split_save_v4";
 const PLAYER_MAX_HP = 100;
 const REVIEW_ENEMY_HP = 40;
@@ -5663,10 +5840,18 @@ function injectBgmButton() {
     const screen = document.querySelector(".screen");
     if (!screen) return;
 
+    // 古い画面に残ったBGMボタンがあれば削除
+    document.querySelectorAll(".bgm-toggle").forEach(function(btn) {
+      if (!screen.contains(btn)) {
+        btn.remove();
+      }
+    });
+
     let button = screen.querySelector(".bgm-toggle");
 
     if (!button) {
       button = document.createElement("button");
+      button.id = "bgmToggle";
       button.className = "bgm-toggle";
       button.type = "button";
       button.addEventListener("click", toggleBgm);
@@ -5777,11 +5962,16 @@ function showTitle() {
         </div>
 
         <div class="btn-area title-actions">
-          <button onclick="showNameInput()">はじめる</button>
-          <button class="sub" onclick="continueGame()">つづきから</button>
-          <button class="sub" onclick="showStats()">成績を見る</button>
-          <button class="danger" onclick="resetGame()">はじめから</button>
-        </div>
+      <button onclick="showNameInput()">はじめる</button>
+      <button class="sub" onclick="continueGame()">つづきから</button>
+    
+      <div class="title-mini-row">
+        <button class="sub title-mini-button" onclick="showStats()">成績を見る</button>
+        <button class="sub title-mini-button feedback-button" onclick="openFeedbackForm()">感想を送る</button>
+       </div>
+
+        <button class="danger" onclick="resetGame()">はじめから</button>
+      </div>
       </div>
     </div>
   `;
