@@ -145,7 +145,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/jiyu_clear.png",
     clearHeadline: "使命の風が、大地を渡る。",
     clearLead: "自分だけを守ろうとする殻がほどけ、大地には人のために生きる風が吹き始めた。",
-    clearEnemyLine: "ジブンダケ「守るだけじゃなく、誰かと進む道もあるんだね。」",
+    clearEnemyLine: "ジブンダケ「誰かと共に進む道もある。それに気づけてよかった！」",
     clearSoraLine: "優しさは、自分を越えて広がっていくんですね……！",
     clearCompanionText: "ジブンダケは閉じた殻を破り、人と人をつなぐ希望の種へと姿を変えていく。"
   },
@@ -241,7 +241,7 @@ const AREAS = [
     clearScenePath: "assets/images/clear/tower_clear.png",
     clearHeadline: "希望は、世界へひらかれた。",
     clearLead: "あきらめの闇は晴れ、学びと励ましの光が、新たな時代へと広がっていった。",
-    clearEnemyLine: "アキラメノオウ「それでも、人は変われるんだね……。」",
+    clearEnemyLine: "アキラメノオウ「それでも、人は変われるのか...」",
     clearSoraLine: "ここから先は、希望を届ける本当の旅ですね！",
     clearCompanionText: "アキラメノオウの闇は光へと還り、人間の可能性を見守る大いなる希望へ変わっていく。"
   }
